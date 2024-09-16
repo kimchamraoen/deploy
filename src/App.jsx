@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <h1> Hello wold!!!</h1>
-      <h1> Hello wold!!!</h1>
     </>
   );
 }

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -95,7 +93,7 @@ function Login() {
                     Remember Me
                   </label>
                   <Link
-                    to="/forgot-password"
+                    to="/ForgotPassword"
                     className="text-blue-600 hover:underline"
                   >
                     Forgot Password?
@@ -104,13 +102,6 @@ function Login() {
               </Form>
             )}
           </Formik>
-          <div>
-            <p className="text-center p-5">Or Login With</p>
-            <div className="Google icon text-[30px] flex justify-center gap-5">
-              <FcGoogle />
-              <FaFacebook />
-            </div>
-          </div>
           <div className="mt-6 text-center">
             <p className="text-gray-600">Don't have an account?</p>
             <Link to="/register" className="text-blue-600 hover:underline">

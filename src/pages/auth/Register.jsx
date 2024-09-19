@@ -1,30 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
-  const [registered, setRegistered] = useState(false); // Track registration status
+  const [registered, setRegistered] = useState(false);
+  const navigate = useNavigate();
 
   const getExistingEmails = () => {
     const emails = localStorage.getItem("emails");
     return emails ? JSON.parse(emails) : [];
   };
 
-  const loadFormData = () => {
-    const formData = localStorage.getItem("formData");
-    return formData
-      ? JSON.parse(formData)
-      : { name: "", email: "", password: "" };
+  const hashPassword = (password) => {
+    return btoa(password); // Simple hash (not secure for production)
   };
 
-  const initialValues = loadFormData();
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -32,6 +33,9 @@ function Register() {
       .required("Email is required")
       .email("Invalid email format"),
     password: Yup.string().required("Password is required"),
+    confirmPassword: Yup.string()
+      .required("Confirm Password is required")
+      .oneOf([Yup.ref("password"), null], "Passwords must match"),
   });
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -46,13 +50,25 @@ function Register() {
       setSubmitting(true);
       existingEmails.push(values.email);
       localStorage.setItem("emails", JSON.stringify(existingEmails));
-      localStorage.setItem("formData", JSON.stringify(values));
+
+      // Create user object
+      const userData = {
+        name: values.name,
+        email: values.email,
+        password: hashPassword(values.password), // Hash the password
+      };
+
+      // Store user data in localStorage
+      localStorage.setItem(values.email, JSON.stringify(userData));
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       toast.success("Registration successful!");
       resetForm();
-      setRegistered(true); // Set registration status to true
+      setRegistered(true);
+
+      // Redirect to home page after successful registration
+      navigate("/"); // Adjust the path as necessary
     } catch (error) {
       toast.error("An error occurred during registration.");
     } finally {
@@ -62,7 +78,7 @@ function Register() {
 
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-r">
-      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg ">
+      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg">
         <div>
           <img
             src="./src/assets/Sign up-bro.png"
@@ -70,7 +86,7 @@ function Register() {
             className="max-h-96 object-cover rounded-lg"
           />
         </div>
-        <div className="w-[500px] ">
+        <div className="w-[500px]">
           <div className="w-[100%] flex justify-center">
             <img
               src="./src/assets/LogoFinal.png"
@@ -81,7 +97,7 @@ function Register() {
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
             Welcome to Story Bridge <br /> Create an Account
           </h1>
-          {!registered ? ( // Conditional rendering based on registration status
+          {!registered ? (
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
@@ -89,6 +105,7 @@ function Register() {
             >
               {({ isSubmitting }) => (
                 <Form className="space-y-6">
+                  {/* Form Fields */}
                   <div className="relative">
                     <Field
                       type="text"
@@ -138,12 +155,12 @@ function Register() {
                   <div className="relative">
                     <Field
                       type={showPassword ? "text" : "password"}
-                      name="password"
-                      placeholder="Comfime Password"
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
                     />
                     <ErrorMessage
-                      name="password"
+                      name="confirmPassword"
                       component="div"
                       className="text-red-500 text-sm mt-1"
                     />
@@ -173,8 +190,8 @@ function Register() {
               <p className="mb-4">
                 Thank you for signing up. You can now log in.
               </p>
-              <Link to="/login" className="text-blue-600 hover:underline">
-                Go to Login
+              <Link to="/" className="text-blue-600 hover:underline">
+                Go to Home
               </Link>
             </div>
           )}
@@ -190,4 +207,5 @@ function Register() {
     </div>
   );
 }
+
 export default Register;

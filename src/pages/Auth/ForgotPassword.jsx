@@ -1,64 +1,86 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Formik, Field, ErrorMessage } from "formik";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-export function NewPassword() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle password submission logic here
+export default function ForgotPassword() {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit = async (values) => {
+    console.log("Form submitted:", values);
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    navigate("/verifyotp");
   };
-
   return (
-    <div className="flex flex-col h-screen">
-      <h1 className="font-bold text-2xl text-center mt-[3rem] mb-10 sm:mt-16 sm:mb-8">
-        New Password
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:mx-auto">
-        <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
-          <div className="mb-5">
-            <label
-              htmlFor="new-password"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Enter New Password
-            </label>
-            <input
-              type="password"
-              id="new-password"
-              className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 sm:w-72 lg:w-96"
-              required
-              placeholder="8 characters at least"
-            />
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="confirm-password"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirm-password"
-              className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              required
-            />
-          </div>
-
-          {/* Centering the button */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="text-white bg-blue-900 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-56 px-5 py-2.5"
-            >
-              Send
-            </button>
-          </div>
-        </form>
-
-        <img
-          src="https://img.freepik.com/premium-vector/forgot-password-account-login-web-page-protection-security-key-access-system-smartphone-computer-flat-vector-illustration_2175-1375.jpg?w=996"
-          alt="Forgot password illustration"
-          className="mx-auto max-w-full md:max-w-lg md:mt-0 mt-4"
-        />
+    <div className="flex h-screen items-center justify-center bg-gradient-to-r">
+      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg">
+        <Formik initialValues={{ email: "" }} onSubmit={handleSubmit}>
+          {() => (
+            <form>
+              <h2 className="text-2xl font-semibold mb-4 text-center">
+                Forgot Password
+              </h2>
+              <p className="mb-4">
+                Please enter your email or mobile number to search for <br />{" "}
+                your account.
+              </p>
+              <div className="relative mb-4">
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+              <button
+                type="submit"
+                className={`w-full bg-primary200 text-white py-2 rounded-md transition duration-200 ${
+                  isLoading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "hover:bg-primary100"
+                }`}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 0116 0H4z"
+                      />
+                    </svg>
+                    Loading...
+                  </div>
+                ) : (
+                  "Submit"
+                )}
+              </button>
+              <div className="mt-4 text-center">
+                <Link to="/login" className="text-primary100 hover:underline">
+                  Back to Login
+                </Link>
+              </div>
+            </form>
+          )}
+        </Formik>
       </div>
     </div>
   );

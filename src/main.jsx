@@ -1,13 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
-import RootLayout from "./components/layout/RootLayout.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./components/layouts/RootLayout.jsx";
+import Register from "./pages/auth/Register.jsx";
+import Product from "./pages/product/Product.jsx";
+import ProductDetail from "./pages/productDetail/ProductDetail.jsx";
 import Login from "./pages/auth/Login.jsx";
-import Resgister from "./pages/auth/Register.jsx";
-import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
-import Verifyotp from "./pages/auth/Verifyotp.jsx";
+import Verify from "./pages/auth/Verify.jsx";
+import Job from "./pages/job/Job.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,29 +18,38 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App />,
+        element: <App />
       },
-    ],
+      // {
+      //   path: "/products",
+      //   element: <Product />
+      // },
+      // {
+      //   path: "/products/:id",
+      //   element: <ProductDetail />
+      // },
+      // {
+      //   path: "/jobs",
+      //   element: <Job />
+      // }
+    ]
   },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Resgister />,
-  },
-  {
-    path: "/ForgotPassword",
-    element: <ForgotPassword />,
-  },
-  {
-    path: "/verifyotp",
-    element: <Verifyotp />,
-  },
+  // {
+  //   path: "/register",
+  //   element: <Register />
+  // },
+  // {
+  //   path: "/login",
+  //   element: <Login />
+  // },
+  // {
+  //   path: "/verify-email",
+  //   element: <Verify />
+  // }
 ]);
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <RouterProvider router={router} />
   </StrictMode>
 );

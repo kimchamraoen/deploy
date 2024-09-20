@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavbarComponent } from "./components/layout/Navbar";
+import { Footercomponent } from "./components/layout/Footer";
 import ProductCard from "./components/card/ProductCard";
 import { getAllProducts } from "./service/product/productAction";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

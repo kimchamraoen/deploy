@@ -1,62 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faComment,faSave } from "@fortawesome/free-solid-svg-icons";
+// import { faSave } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-export default function ProductCard({ image, title, price, brand, id }) {
+export default function ProductCard({ image, title, description }) {
+  const likes = 120;
+  const comments = 120;
   return (
     <>
-      <Link
-        to={`/products/${id}`}
-        className="group relative block overflow-hidden"
-      >
-        <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
-          <span className="sr-only">Wishlist</span>
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-4"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+      <main className="max-w-screen-2xl mx-auto px-10 mt-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="bg-white shadow-md rounded-lg overflow-hidden w-80">
+            <img
+              src={image}
+              alt="{title}"
+              className="w-full h-48 object-cover"
             />
-          </svg>
-        </button>
-
-        <img
-          src={
-            image ||
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeJQeJyzgAzTEVqXiGe90RGBFhfp_4RcJJMQ&s"
-          }
-          alt=""
-          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
-        />
-
-        <div className="relative border border-gray-100 bg-white p-6">
-          {/* {brand && (
-            <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
-              {brand}
-            </span>
-          )} */}
-          <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
-            {brand || "No brand"}
-          </span>
-
-          <h3 className="mt-4 text-lg font-medium text-gray-900">{title}</h3>
-
-          <p className="mt-1.5 text-sm text-gray-700">${price}</p>
-
-          <form className="mt-4">
-            <button className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105">
-              Add to Cart
-            </button>
-          </form>
+            <div className="p-4">
+              <div className="flex items-center mb-2">
+                <img src="" alt="{title}" className="rounded-full mr-2" />
+                <div>
+                  <p className="text-sm font-semibold">Natali Craig</p>
+                  <p className="text-xs text-gray-500">14 Jan 2022</p>
+                </div>
+              </div>
+              <h2 className="text-lg font-bold mb-2 line-clamp-1">{title}</h2>
+              <p className="text-gray-700 text-sm mb-4 line-clamp-2">
+                {description}
+              </p>
+              <div className="flex justify-between text-gray-600 text-sm">
+                <span className="badge">
+                  {likes} <FontAwesomeIcon icon={faHeart} />
+                </span>
+                <span className="badge">
+                  {likes} <FontAwesomeIcon icon={faSave} />
+                </span>
+                <span className="badge">
+                  {comments} <FontAwesomeIcon icon={faComment} />
+                  {/* <FontAwesomeIcon icon={faEnvelope} /> */}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-      </Link>
+      </main>
     </>
   );
 }

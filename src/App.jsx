@@ -1,63 +1,40 @@
-// <<<<<<< HEAD
-// import { ForgotPassword} from "./pages/Auth/ForgotPassword"
-import { NewPassword } from "./pages/Auth/NewPassword";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavbarComponent } from "./components/layout/Navbar";
+import ProductCard from "./components/card/ProductCard";
+import { getAllProducts } from "./service/product/productAction";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-const App = () =>{
-  const [products, setProducts] = useState([]); // products =[]
-  const [loading, setLoading] = useState(false);
 
+function App() {
+  const [products, setProducts] = useState([]); 
   console.log("products", products);
-  // get user profile
-  useEffect(() => {
-    async function fetchUserProfile() {
-      const accessToken = getAccessToken();
-      console.log("accessToken", accessToken);
-      const userData = await getUserProfile(accessToken);
-      console.log("userData", userData);
-    }
 
-    fetchUserProfile();
-  }, []);
   useEffect(() => {
     async function fetchAllProducts() {
-      setLoading(true);
       let product = await getAllProducts();
       setProducts(product);
-      setLoading(false);
     }
     fetchAllProducts();
   }, []);
-  return<>
-    {/* <ForgotPassword/> */}
-    {/* <NewPassword/> */}
-    <main className="max-w-screen-2xl mx-auto px-5">
-      <section>
-        <h1 className="text-blue-800 font-bold text-4xl text-center mt-5">
-          List Products
-        </h1>
-        <img src="javascript.png" alt="" />
+
+  return (
+    <>
+      {/* <NavbarComponent /> */}
+      <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {loading && (
-            <img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" />
-          )}
-          {!loading &&
-            products
-              .slice(0, 8)
-              .map((product, index) => (
-                <ProductCard
-                  key={index}
-                  title={product.title}
-                  image={product.images[0]}
-                  price={product.price}
-                  brand={product.brand}
-                  id={product.id}
-                />
-              ))}
+          {products.map((product) => (
+            <ProductCard
+              image={product.images[0]} // Ensure each ProductCard has a unique key
+              title={product.title}
+              description={product.description}
+            />
+          ))}
+          
         </div>
-      </section>
-    </main>
-  </>;
+      </div>
+    </>
+  );
 }
+
 export default App;

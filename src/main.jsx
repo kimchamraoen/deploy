@@ -7,7 +7,8 @@ import RootLayout from "./components/layout/RootLayout.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Resgister from "./pages/auth/Register.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
-import Verifyotp from "./pages/auth/Verifyotp.jsx";
+import ProfileUser from "./pages/auth/Profile.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
     element: <ForgotPassword />,
   },
   {
-    path: "/verifyotp",
-    element: <Verifyotp />,
+    path: "/profile",
+    element: <ProfileUser />,
   },
 ]);
 createRoot(document.getElementById("root")).render(

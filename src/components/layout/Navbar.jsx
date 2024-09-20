@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import { TfiPencilAlt } from "react-icons/tfi";
-const UserData = (email) => {
-  const userData = localStorage.getItem(email);
-  return userData ? JSON.parse(userData) : null;
-};
-const HandleLogout = () => {
-  localStorage.removeItem(UserData);
-};
+
 export function NavbarComponent() {
+  const userData = localStorage.getItem("email");
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -18,7 +13,7 @@ export function NavbarComponent() {
           </span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          {!UserData ? ( // Check if UserData is not present
+          {!userData && (
             <>
               <Link to="/login">
                 <button
@@ -37,21 +32,13 @@ export function NavbarComponent() {
                 </button>
               </Link>
             </>
-          ) : (
+          )}
+          {userData && (
             <>
-              <div className="flex items-center">
-                <TfiPencilAlt className="text-primary200 mr-4 text-3xl" />
-                <div className="w-12 h-12 bg-black rounded-full mr-4">
-                  <img src=".src/assete/_MG_1803 copy.jpg" alt="" />
-                </div>
-                <button
-                  onClick={() => HandleLogout}
-                  type="button"
-                  className="text-white bg-primary100 hover:bg-primary200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center shadow-lg transition duration-300 ease-in-out transform hover:scale-105 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Logout
-                </button>
-              </div>
+              {" "}
+              <Button onClick={() => handleLogout()} className="ml-2">
+                Logout
+              </Button>
             </>
           )}
           <button

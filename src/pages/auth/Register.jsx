@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [registered, setRegistered] = useState(false);
@@ -23,8 +22,8 @@ function Register() {
   const initialValues = {
     name: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    password: "Ifmesayes123@",
+    confirmPassword: "Ifmesayes123@",
   };
 
   const validationSchema = Yup.object().shape({
@@ -37,38 +36,31 @@ function Register() {
       .required("Confirm Password is required")
       .oneOf([Yup.ref("password"), null], "Passwords must match"),
   });
-
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     const existingEmails = getExistingEmails();
     if (existingEmails.includes(values.email)) {
       toast.error("This email already exists. Please use a different email.");
       setSubmitting(false);
+      console.log("Get Emial:  ", values.email);
+
       return;
     }
-
     try {
       setSubmitting(true);
       existingEmails.push(values.email);
       localStorage.setItem("emails", JSON.stringify(existingEmails));
-
-      // Create user object
       const userData = {
         name: values.name,
         email: values.email,
-        password: hashPassword(values.password), // Hash the password
+        password: hashPassword(values.password),
       };
-
-      // Store user data in localStorage
       localStorage.setItem(values.email, JSON.stringify(userData));
-
       await new Promise((resolve) => setTimeout(resolve, 1000));
-
       toast.success("Registration successful!");
       resetForm();
       setRegistered(true);
-
-      // Redirect to home page after successful registration
-      navigate("/"); // Adjust the path as necessary
+      //navigaet
+      navigate("/");
     } catch (error) {
       toast.error("An error occurred during registration.");
     } finally {

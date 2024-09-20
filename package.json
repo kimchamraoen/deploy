@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "dotenv": "^16.4.5",
     "flowbite-react": "^0.10.1",
     "formik": "^2.4.6",
     "localforage": "^1.10.0",

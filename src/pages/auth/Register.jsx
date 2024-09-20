@@ -42,7 +42,6 @@ function Register() {
       toast.error("This email already exists. Please use a different email.");
       setSubmitting(false);
       console.log("Get Emial:  ", values.email);
-
       return;
     }
     try {

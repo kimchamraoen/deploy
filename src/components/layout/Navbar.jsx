@@ -35,10 +35,28 @@ export function NavbarComponent() {
           )}
           {userData && (
             <>
+<<<<<<< HEAD
               {" "}
               <Button onClick={() => handleLogout()} className="ml-2">
                 Logout
               </Button>
+=======
+              <div className="flex items-center">
+                <TfiPencilAlt className="text-primary200 mr-4 text-3xl" />
+                <Link to = "/Profile"> 
+                <div className="w-12 h-12 bg-black rounded-full mr-4">
+                  <img src=".src/assete/_MG_1803 copy.jpg" alt="" />
+                </div>
+                </Link>
+                <button
+                  onClick={() => HandleLogout}
+                  type="button"
+                  className="text-white bg-primary100 hover:bg-primary200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center  duration-300 ease-in-out transform hover:scale-105 dark:bg-blue-600  dark:focus:ring-blue-800"
+                >
+                  Logout
+                </button>
+              </div>
+>>>>>>> 6a7ade2250f3f95ed562f7232a05f8ca7e4de865
             </>
           )}
           <button

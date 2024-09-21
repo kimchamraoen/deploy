@@ -37,9 +37,7 @@ const ProfilePage = () => {
 
           {/* Written By Section */}
           <div>
-            <h2 className="text-2xl font-bold mb-2 m-4">
-              Written by Heesoung Heng
-            </h2>
+            <h2 className="text-2xl font-bold mb-2 m-4 ">All post</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Article Card */}
               <ArticleCard
@@ -49,28 +47,6 @@ const ProfilePage = () => {
                 description="Collaboration can make our teams stronger and our individual designs better."
                 image="https://via.placeholder.com/300"
               />
-              <ArticleCard
-                author="Natal Craig"
-                date="14 Jan 2022"
-                title="How collaboration makes us better designers"
-                description="Collaboration can make our teams stronger and our individual designs better."
-                image="https://via.placeholder.com/300"
-              />
-              <ArticleCard
-                author="Natal Craig"
-                date="14 Jan 2022"
-                title="How collaboration makes us better designers"
-                description="Collaboration can make our teams stronger and our individual designs better."
-                image="https://via.placeholder.com/300"
-              />
-              <ArticleCard
-                author="Natal Craig"
-                date="14 Jan 2022"
-                title="How collaboration makes us better designers"
-                description="Collaboration can make our teams stronger and our individual designs better."
-                image="https://via.placeholder.com/300"
-              />
-              {/* Repeat more ArticleCard components for each article */}
             </div>
           </div>
         </div>

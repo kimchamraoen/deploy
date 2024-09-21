@@ -63,7 +63,7 @@ export function AboutUs() {
           <img
             src="./public/assets/mentor-2.jpg"
             alt="Mentor 2"
-            className="w-48 h-48 rounded-full mx-auto"
+            className="w-48 h-48 rounded-full mx-auto object-cover"
           />
         </div>
       </section>

@@ -24,10 +24,10 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
-      // {
-      //   path: "/aboutus",
-      //   element: <AboutUs/>
-      // },
+      {
+        path: "/aboutus",
+        element: <AboutUs/>
+      },
     ],
   },
   {
@@ -51,6 +51,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}></RouterProvider>
-    <AboutUs/>
   </StrictMode>
 );

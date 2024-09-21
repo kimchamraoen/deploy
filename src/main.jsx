@@ -10,10 +10,14 @@ import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { AboutUs } from "./pages/Aboutus.jsx";
 =======
 import EditProfile from "./pages/auth/EditProfile.jsx"
 >>>>>>> 651b86aa694cb6578053e653469d6ba2aa6dfcd0
+=======
+import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+>>>>>>> d099251b71fa50257015a07c542b45b880a519d6
 
 const router = createBrowserRouter([
   {
@@ -60,6 +64,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}></RouterProvider>
+<<<<<<< HEAD
     <AboutUs/>
+=======
+    <ArticleDetail/>
+>>>>>>> d099251b71fa50257015a07c542b45b880a519d6
   </StrictMode>
 );

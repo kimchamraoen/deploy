@@ -9,7 +9,11 @@ import Register from "./pages/auth/Register.jsx"; // Fixed typo here
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
+<<<<<<< HEAD
 import { AboutUs } from "./pages/Aboutus.jsx";
+=======
+import EditProfile from "./pages/auth/EditProfile.jsx"
+>>>>>>> 651b86aa694cb6578053e653469d6ba2aa6dfcd0
 
 const router = createBrowserRouter([
   {
@@ -25,8 +29,13 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+<<<<<<< HEAD
         path: "/aboutus",
         element: <AboutUs/>
+=======
+        path: "/editprofile",
+        element: <EditProfile />,
+>>>>>>> 651b86aa694cb6578053e653469d6ba2aa6dfcd0
       },
     ],
   },

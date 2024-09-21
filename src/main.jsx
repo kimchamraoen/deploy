@@ -10,6 +10,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
 import EditProfile from "./pages/auth/EditProfile.jsx";
+import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,14 +21,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <App />,
       },
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/editprofile",
-        element: <EditProfile />,
-      },
+
+      // {
+      //   path: "/editprofile",
+      //   element: <EditProfile />,
+      // },
+      // {
+      //   path: "/articledetail",
+      //   element: <ArticleDetail />,
+      // },
     ],
   },
   {
@@ -51,5 +53,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}></RouterProvider>
+    <ArticleDetail />
   </StrictMode>
 );

@@ -35,18 +35,16 @@ export function NavbarComponent() {
           )}
           {userData && (
             <>
-<<<<<<< HEAD
               {" "}
               <Button onClick={() => handleLogout()} className="ml-2">
                 Logout
               </Button>
-=======
               <div className="flex items-center">
                 <TfiPencilAlt className="text-primary200 mr-4 text-3xl" />
-                <Link to = "/Profile"> 
-                <div className="w-12 h-12 bg-black rounded-full mr-4">
-                  <img src=".src/assete/_MG_1803 copy.jpg" alt="" />
-                </div>
+                <Link to="/Profile">
+                  <div className="w-12 h-12 bg-black rounded-full mr-4">
+                    <img src=".src/assete/_MG_1803 copy.jpg" alt="" />
+                  </div>
                 </Link>
                 <button
                   onClick={() => HandleLogout}
@@ -56,7 +54,6 @@ export function NavbarComponent() {
                   Logout
                 </button>
               </div>
->>>>>>> 6a7ade2250f3f95ed562f7232a05f8ca7e4de865
             </>
           )}
           <button

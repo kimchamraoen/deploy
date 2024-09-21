@@ -7,13 +7,9 @@ import RootLayout from "./components/layout/RootLayout.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx"; // Fixed typo here
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
-<<<<<<< HEAD
 import ProfileUser from "./pages/auth/Profile.jsx";
-=======
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
->>>>>>> 6a7ade2250f3f95ed562f7232a05f8ca7e4de865
-
 const router = createBrowserRouter([
   {
     path: "/",

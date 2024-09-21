@@ -1,10 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
-
+import { CiBookmark } from "react-icons/ci";  
 export default function profileUser() {
-  return <div>profileUser</div>;
-}
-=======
+ 
 import { ArticleCard } from "../../components/card/UserBlogCard";
 
 const ProfilePage = () => {
@@ -23,6 +20,7 @@ const ProfilePage = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
+
               {/* Profile Text */}
               <div className="ml-[110px] p-2">
                 <h1 className="text-xl font-bold">Heesoung Heng</h1>
@@ -30,6 +28,9 @@ const ProfilePage = () => {
                   Senior Data Scientist | AI Writer Top writer in Artificial
                   Intelligence
                 </p>
+                <span>
+                   <CiBookmark className=""/>
+                </span>
                 <p className="text-gray-600">Position: Data Science</p>
                 <p className="text-gray-600">Ranking: ⭐⭐⭐⭐</p>
                 <p className="text-gray-600">Location: Phnom Penh</p>
@@ -88,4 +89,3 @@ const ProfilePage = () => {
 // Article Card Component
 
 export default ProfilePage;
->>>>>>> 6a7ade2250f3f95ed562f7232a05f8ca7e4de865

@@ -7,8 +7,8 @@ export function Footercomponent() {
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <FooterBrand
-            href="https://flowbite.com"
-            src="./src/assets/LogoFinal.png"
+            href="./public/assets/LogoFinal.png"
+            src="./public/assets/LogoFinal.png"
             alt="Flowbite Logo"
             name="StoryBridge"
           />

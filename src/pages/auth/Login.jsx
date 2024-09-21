@@ -32,7 +32,7 @@ function Login() {
         <div className="w-[500px] ">
           <div className="w-[100%] flex justify-center">
             <img
-              src="./src/assets/LogoFinal.png"
+              src="./public/assets/LogoFinal.png"
               className="w-[100px] "
               alt="Logo"
             />
@@ -111,7 +111,7 @@ function Login() {
         </div>
         <div>
           <img
-            src="./src/assets/Sign up-bro.png"
+            src="./public/assets/Sign up-bro.png"
             alt="Hero Image"
             className=" max-h-96 object-cover rounded-lg"
           />

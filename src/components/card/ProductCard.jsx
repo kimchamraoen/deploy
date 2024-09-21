@@ -1,14 +1,34 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faComment, faEnvelope, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
+import { FaRegHeart, FaHeart, FaBookmark, FaRegBookmark, FaShare } from "react-icons/fa";
 
-export default function ProductCard({ image, title, description, likes = 0, comments = 0, bookmarks = 0 }) {
-  
+export default function ProductCard({ image, title, description }) {
+  const [likes, setLikes] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
+  const [bookmarks, setBookmarks] = useState(0);
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [shares, setShares] = useState(0); // State for share count
+
+  const handleLikeClick = () => {
+    setIsLiked(prev => !prev);
+    setLikes(prev => (isLiked ? prev - 1 : prev + 1));
+  };
+  const handleShare = () => {
+    setShares(prev => (shares ? prev - 1 : prev + 1)); 
+    console.log(`Shared: ${title}`); 
+  };
+
+  const handleBookmarkClick = () => {
+    setIsBookmarked(prev => {
+      const newBookmarkState = !prev;
+      setBookmarks(prev => (newBookmarkState ? prev + 1 : prev - 1));
+      return newBookmarkState;
+    });
+  };
+
   return (
-    
-    <main className="max-w-screen-2xl mx-auto px-10 mt-24">
+    <main className="max-w-screen-2xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <div className="bg-white  rounded-lg overflow-hidden w-80">
+        <div className="bg-white rounded-lg overflow-hidden w-80 border-2">
           <img
             src={image}
             alt={title}
@@ -26,16 +46,31 @@ export default function ProductCard({ image, title, description, likes = 0, comm
             <p className="text-gray-700 text-sm mb-4 line-clamp-2">
               {description}
             </p>
-            <div className="flex justify-between text-gray-600 text-sm">
-              <span className="badge">
-                {likes} <FontAwesomeIcon icon={faHeart} />
-              </span>
-              <span className="badge">
-                {bookmarks} <FontAwesomeIcon icon={faBookmark} />
-              </span>
-              <span className="badge">
-                {comments} <FontAwesomeIcon icon={faComment} />
-              </span>
+            <div className="w-full flex justify-between text-md">
+              <div className="flex gap-2 text-gray-600 mb-2">
+                <span className="badge">
+                  <button onClick={handleLikeClick}>
+                    {isLiked ? <FaHeart /> : <FaRegHeart />}
+                  </button>
+                </span>
+                <span className="badge">{likes}</span>
+              </div>
+              <div className="flex gap-2 text-gray-600">
+                <span className="badge">
+                  <button onClick={handleBookmarkClick}>
+                    {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
+                  </button>
+                </span>
+                <span className="badge">{bookmarks}</span>
+              </div>
+              <div className="flex gap-2 text-gray-600">
+                <span className="badge">
+                  <button onClick={handleShare}>
+                    <FaShare />
+                  </button>
+                </span>
+                <span className="badge">{shares}</span> {/* Display share count */}
+              </div>
             </div>
           </div>
         </div>

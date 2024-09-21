@@ -2,7 +2,7 @@ import React from "react";
 
 export function AboutUs() {
   return (
-    <div className="font-sans">
+    <div className="font-sans mt-[4rem]">
       {/* About Us Section */}
       <section className="text-center py-10">
         <h1 className="text-4xl font-bold mb-4">About Us</h1>

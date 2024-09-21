@@ -5,12 +5,9 @@ import ProductCard from "./components/card/ProductCard";
 import { getAllProducts } from "./service/product/productAction";
 import ProfileCard from "./pages/auth/EditProfile";
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
 
 function App() {
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
   console.log("products", products);
 
   useEffect(() => {
@@ -25,8 +22,26 @@ function App() {
     <>
       {/* <NavbarComponent /> */}
       {/* <NewPassword/> */}
-      <ProfileCard/>
+      {/* <ProfileCard /> */}
       <div>
+        <div className="bg-blue-950 w-full mt-[5rem] flex justify-between wrap ">
+          <div className="ml-5 mt-3">
+            <div className="flex font-bold space-x-2 ">
+              <h1 className="text-white text-lg ">Welcome to </h1>
+              <h1 className="text-amber-400 text-lg "> STORY BRIDGE</h1>
+            </div>
+            <p className="text-white text-sm my-3">
+              A knowledge-sharing platform that allows users to create, share,
+              and explore insightful articles across various topics.
+            </p>
+            <button className="text-white border-2 p-1 text-base">About Us</button>
+          </div>
+          <img
+            src="./src/assets copy/973.jpg"
+            alt="block"
+            className=" max-h-32 object-cover rounded-lg mr-5 p-4"
+          />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {products.map((product) => (
             <ProductCard
@@ -35,7 +50,6 @@ function App() {
               description={product.description}
             />
           ))}
-          
         </div>
       </div>
     </>

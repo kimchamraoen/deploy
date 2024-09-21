@@ -9,6 +9,9 @@ import Register from "./pages/auth/Register.jsx"; // Fixed typo here
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
+import { AboutUs } from "./pages/Aboutus.jsx";
+import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+import ProductDetail from "./pages/auth/ProductDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
+      {
+        path: "/aboutus",
+        element: <AboutUs />
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetail />
+      }
     ],
   },
   {

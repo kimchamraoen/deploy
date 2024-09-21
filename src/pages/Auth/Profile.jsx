@@ -15,7 +15,7 @@ const ProfilePage = () => {
     email: "paulaguillar1992@gmail.com",
     ranking: "⭐️⭐️⭐️⭐️",
   };
-  
+
   return (
     <main className="mt-16">
       <div className="min-h-screen bg-gray-100 p-6">
@@ -36,7 +36,9 @@ const ProfilePage = () => {
                 </button>
               </div>
               <div className="ml-6 p-2">
-                <h1 className="text-2xl font-bold text-gray-800">{profile.fullName}</h1>
+                <h1 className="text-2xl font-bold text-gray-800">
+                  {profile.fullName}
+                </h1>
                 <p className="text-sm text-gray-600">{profile.designation}</p>
                 <p className="text-gray-700">Position: {profile.position}</p>
                 <p className="text-gray-700">Ranking: {profile.ranking}</p>
@@ -57,19 +59,24 @@ const ProfilePage = () => {
                 description="Collaboration can make our teams stronger and our individual designs better."
                 image="https://via.placeholder.com/300"
               />
-            <h2 className="text-2xl font-bold mb-2 m-4">Written by {profile.fullName}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Example Article Card */}
-              {Array(4).fill().map((_, index) => (
-                <ArticleCard
-                  key={index}
-                  author="Natal Craig"
-                  date="14 Jan 2022"
-                  title="How collaboration makes us better designers"
-                  description="Collaboration can make our teams stronger and our individual designs better."
-                  image="https://via.placeholder.com/300"
-                />
-              ))}
+              <h2 className="text-2xl font-bold mb-2 m-4">
+                Written by {profile.fullName}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Example Article Card */}
+                {Array(4)
+                  .fill()
+                  .map((_, index) => (
+                    <ArticleCard
+                      key={index}
+                      author="Natal Craig"
+                      date="14 Jan 2022"
+                      title="How collaboration makes us better designers"
+                      description="Collaboration can make our teams stronger and our individual designs better."
+                      image="https://via.placeholder.com/300"
+                    />
+                  ))}
+              </div>
             </div>
           </div>
         </div>

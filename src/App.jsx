@@ -48,6 +48,7 @@ function App() {
               image={product.images[0]}
               title={product.title}
               description={product.description}
+              id={product.id}
             />
           ))}
         </div>

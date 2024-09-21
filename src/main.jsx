@@ -11,6 +11,7 @@ import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
 import { AboutUs } from "./pages/Aboutus.jsx";
 import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+import ProductDetail from "./pages/auth/ProductDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/aboutus",
-        element: <AboutUs/>
+        element: <AboutUs />
       },
+      {
+        path: "/products/:id",
+        element: <ProductDetail />
+      }
     ],
   },
   {
@@ -52,6 +57,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}></RouterProvider>
-    <ArticleDetail/>
   </StrictMode>
 );

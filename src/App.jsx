@@ -4,13 +4,10 @@ import { Footercomponent } from "./components/layout/Footer";
 import ProductCard from "./components/card/ProductCard";
 import { getAllProducts } from "./service/product/productAction";
 import ProfileCard from "./pages/auth/EditProfile";
-
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-
-
 function App() {
-  const [products, setProducts] = useState([]); 
+  const [products, setProducts] = useState([]);
   console.log("products", products);
 
   useEffect(() => {
@@ -25,7 +22,7 @@ function App() {
     <>
       {/* <NavbarComponent /> */}
       {/* <NewPassword/> */}
-      <ProfileCard/>
+      {/* <ProfileCard/> */}
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {products.map((product) => (
@@ -35,11 +32,9 @@ function App() {
               description={product.description}
             />
           ))}
-          
         </div>
       </div>
     </>
   );
 }
-
 export default App;

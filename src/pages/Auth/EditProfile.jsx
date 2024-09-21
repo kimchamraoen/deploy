@@ -2,6 +2,7 @@ import React from 'react';
 
 const ProfileCard = () => {
     return (
+        
         <div className="bg-white shadow-md rounded-lg p-6 w-80">
             <div className="mb-4">
                 <label className="block text-sm font-semibold text-gray-700">Full Name</label>
@@ -30,6 +31,7 @@ const ProfileCard = () => {
                     
                 />
             </div>
+
         </div>
     );
 };

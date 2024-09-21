@@ -9,7 +9,7 @@ import Register from "./pages/auth/Register.jsx"; // Fixed typo here
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
-import EditProfile from "./pages/auth/EditProfile.jsx"
+import EditProfile from "./pages/auth/EditProfile.jsx";
 
 const router = createBrowserRouter([
   {

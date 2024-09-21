@@ -12,21 +12,21 @@ const ProfileCard = () => {
     email: "paulaguillar1992@gmail.com",
     ranking: "⭐️⭐️⭐️⭐️",
   });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     navigate("/profile", { state: { profile: formData } });
   };
 
   return (
     <div className="bg-white rounded-lg w-full max-w-md mx-auto mt-24 p-6 shadow-lg">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Profile Information</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        Profile Information
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {[
           { label: "Full Name", name: "fullName" },
@@ -38,7 +38,9 @@ const ProfileCard = () => {
           { label: "Ranking", name: "ranking" },
         ].map(({ label, name, type = "text" }) => (
           <div key={name}>
-            <label className="block text-sm font-semibold text-gray-700">{label}</label>
+            <label className="block text-sm font-semibold text-gray-700">
+              {label}
+            </label>
             <input
               type={type}
               name={name}

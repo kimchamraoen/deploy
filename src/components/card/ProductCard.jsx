@@ -7,24 +7,20 @@ import {
   FaShare,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
 export default function ProductCard({ thumbnail, title, content, id }) {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [bookmarks, setBookmarks] = useState(0);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [shares, setShares] = useState(0); // State for share count
-
   const handleLikeClick = () => {
     setIsLiked((prev) => !prev);
     setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
   };
-
   const handleShare = () => {
     setShares((prev) => prev + 1); // Increment share count
     console.log(`Shared: ${title}`);
   };
-
   const handleBookmarkClick = () => {
     setIsBookmarked((prev) => {
       const newBookmarkState = !prev;
@@ -32,11 +28,10 @@ export default function ProductCard({ thumbnail, title, content, id }) {
       return newBookmarkState;
     });
   };
-
   return (
-    <Link to={`/articledetail/${id} `}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-28 ">
-        <div className="bg-white  rounded-lg overflow-hidden w-80 border-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-28 ">
+      <div className="bg-white  rounded-lg overflow-hidden w-80 border-2">
+        <Link to="/articledetail ">
           <img
             src={thumbnail}
             alt={title}
@@ -52,35 +47,35 @@ export default function ProductCard({ thumbnail, title, content, id }) {
             </div>
             <h2 className="text-lg font-bold mb-2 line-clamp-1">{title}</h2>
             <p className="text-gray-700 text-sm mb-4 line-clamp-2">{content}</p>
-            <div className="w-full flex justify-between text-md">
-              <div className="flex gap-2 text-gray-600 mb-2">
-                <span className="badge">
-                  <button onClick={handleLikeClick}>
-                    {isLiked ? <FaHeart /> : <FaRegHeart />}
-                  </button>
-                </span>
-                <span className="badge">{likes}</span>
-              </div>
-              <div className="flex gap-2 text-gray-600">
-                <span className="badge">
-                  <button onClick={handleBookmarkClick}>
-                    {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
-                  </button>
-                </span>
-                <span className="badge">{bookmarks}</span>
-              </div>
-              <div className="flex gap-2 text-gray-600">
-                <span className="badge">
-                  <button onClick={handleShare}>
-                    <FaShare />
-                  </button>
-                </span>
-                <span className="badge">{shares}</span>
-              </div>
-            </div>
+          </div>
+        </Link>
+        <div className="w-full flex justify-between text-md mx-3  ">
+          <div className="flex gap-2 text-gray-600 mb-2">
+            <span className="badge">
+              <button onClick={handleLikeClick}>
+                {isLiked ? <FaHeart /> : <FaRegHeart />}
+              </button>
+            </span>
+            <span className="badge">{likes}</span>
+          </div>
+          <div className="flex gap-2 text-gray-600">
+            <span className="badge">
+              <button onClick={handleBookmarkClick}>
+                {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
+              </button>
+            </span>
+            <span className="badge">{bookmarks}</span>
+          </div>
+          <div className="flex gap-2 text-gray-600">
+            <span className="badge">
+              <button onClick={handleShare}>
+                <FaShare />
+              </button>
+            </span>
+            <span className="badge">{shares}</span>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

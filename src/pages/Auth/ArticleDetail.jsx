@@ -20,7 +20,6 @@ export default function ArticleDetail({ thumbnail, title, description }) {
       return !prev;
     });
   };
-
   const handleLikeClick = () => {
     setIsLiked((prev) => {
       if (prev) {
@@ -46,7 +45,15 @@ export default function ArticleDetail({ thumbnail, title, description }) {
           </p>
         </div>
       </div>
+
       <h1 className="text-4xl font-bold mt-8 mb-4">{title}</h1>
+
+      <h1 className="text-4xl font-bold mt-8 mb-4">
+        How collaboration makes us better designers
+      </h1>
+      <p className="text-gray-500 mb-8">
+        Michael Alford • September 11, 2024 • 132 views
+      </p>
 
       <img
         src={thumbnail}
@@ -85,6 +92,14 @@ export default function ArticleDetail({ thumbnail, title, description }) {
           libero possimus rerum voluptate enim architecto ipsa tenetur nisi
           excepturi blanditiis voluptatem, sed nam reprehenderit veniam aut!
         </p> */}
+
+        <p className="text-[16px]">
+          I felt a little sheepish, like a teenager waiting for an album to
+          drop, or an Apple fan logging on in the dead of night to be the first
+          to order a Gen 2 iPhone. I actually set my alarm for 1 AM to pre-order
+          a Fuji X100VI the minute they were available at B&H on February 28th.
+          {/* Additional content goes here */}
+        </p>
       </div>
 
       <div className="flex w-[120px] m-8 justify-between">

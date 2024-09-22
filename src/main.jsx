@@ -4,16 +4,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 import RootLayout from "./components/layout/RootLayout.jsx";
-import Login from  "./pages/auth/Login.jsx"
+import  Login  from "./pages/auth/Login.jsx"
 import Register from "./pages/auth/Register.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
 import Verify from "./pages/auth/Verify.jsx";
 import { verify } from "./pages/auth/action/authAction.js";
 import { AboutUs } from "./pages/Aboutus.jsx";
-// import EditProfile from "./pages/auth/EditProfile.jsx"
-// import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
-import ProductDetail from "./pages/auth/ProductDetail.jsx";
+
+import EditProfile from "./pages/auth/EditProfile.jsx"
+
+import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -24,18 +26,19 @@ const router = createBrowserRouter([
         path: "/",
         element: <App />,
       },
+
       {
         path: "/profile",
         element: <Profile />,
       },
       {
         path: "/aboutus",
-        element: <AboutUs />,
+        element: <AboutUs/>
       },
-       
       {
-        path: "/products/:id",
-        element: <ProductDetail />,
+        path: "/editprofile",
+        element: <EditProfile />,
+
       },
     ],
   },

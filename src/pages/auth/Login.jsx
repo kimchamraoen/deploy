@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 
-function Login() {
+function default Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {

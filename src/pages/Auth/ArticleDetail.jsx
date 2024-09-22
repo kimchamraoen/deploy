@@ -35,7 +35,7 @@ export default function ArticleDetail({ thumbnail, title, description }) {
     <div className="container">
       <div className="flex items-center">
         <img
-          src="https://th.bing.com/th/id/OIP.zoM7exeeiIqIWZHm8_KGlgHaHa?pid=ImgDet&w=190&h=190&c=7&dpr=1.9"
+          src=""
           alt="User Profile"
           className="w-12 h-12 rounded-full mr-4"
         />
@@ -60,35 +60,6 @@ export default function ArticleDetail({ thumbnail, title, description }) {
 
       <div className="prose max-w-none">
         <p className="text-[16px]">{description}</p>
-        {/* <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
-          at laborum incidunt optio voluptates fugit rerum quia cum, sit quidem,
-          sed soluta dicta. Nobis, porro optio asperiores illum similique
-          veritatis?Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Facere, odio rem. Similique aliquam ea optio nisi hic voluptate
-          deleniti dolorum id autem reiciendis exercitationem voluptas nihil,
-          est beatae facilis! Dolor.Lorem Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Sunt, sint consequuntur perferendis nisi vel
-          veritatis repellendus. Nisi, ipsa consectetur tenetur esse earum
-          obcaecati dolor quidem laudantium, repellendus mollitia, dolorem
-          commodi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Eveniet voluptates, repellat fugit eos libero possimus rerum voluptate
-          enim architecto ipsa tenetur nisi excepturi blanditiis voluptatem, sed
-          nam reprehenderit veniam aut! Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Architecto at laborum incidunt optio voluptates
-          fugit rerum quia cum, sit quidem, sed soluta dicta. Nobis, porro optio
-          asperiores illum similique veritatis?Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Facere, odio rem. Similique aliquam ea
-          optio nisi hic voluptate deleniti dolorum id autem reiciendis
-          exercitationem voluptas nihil, est beatae facilis! Dolor.Lorem Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Sunt, sint
-          consequuntur perferendis nisi vel veritatis repellendus. Nisi, ipsa
-          consectetur tenetur esse earum obcaecati dolor quidem laudantium,
-          repellendus mollitia, dolorem commodi? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Eveniet voluptates, repellat fugit eos
-          libero possimus rerum voluptate enim architecto ipsa tenetur nisi
-          excepturi blanditiis voluptatem, sed nam reprehenderit veniam aut!
-        </p> */}
       </div>
 
       <div className="flex w-[120px] m-8 justify-between">
@@ -113,7 +84,6 @@ export default function ArticleDetail({ thumbnail, title, description }) {
             <CiBookmark className="mr-2 text-gray-500" />
           )}
           <span className="text-[16px]">{bookmarkCount}</span>{" "}
-          {/* Display the bookmark count */}
         </button>
       </div>
     </div>

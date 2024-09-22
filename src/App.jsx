@@ -8,11 +8,12 @@ import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
 import { data } from "autoprefixer";
 function App() {
-  const [data, setData] = useState([]);
+  const [bloge, setbloge] = useState([]);
   useEffect(() => {
     async function fetchllbloge() {
       const bloges = await getAllbloge();
       console.log("bloges", bloges);
+      setbloge(bloges);
     }
     fetchllbloge();
   }, []);
@@ -42,14 +43,20 @@ function App() {
             className=" max-h-32 object-cover rounded-lg mr-5 p-4"
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-10 mx-auto mt-10">
-          {data.map((datas) => (
-            <>data.title</>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-10 mx-auto mt-10"></div>
       </div>
+      {bloge.map((bloge) => (
+        <ProductCard
+          id={bloge.id}
+          title={bloge.title}
+          thumbnail={bloge.thumbnail}
+          description={bloge.description}
+          author={bloge.author}
+          date={bloge.date}
+          key={bloge.id}
+        />
+      ))}
     </>
   );
 }
-
 export default App;

@@ -35,7 +35,7 @@ export default function ProductCard({ thumbnail, title, content, id }) {
 
   return (
     <div className="max-w-screen-2xl mx-auto">
-      <Link to={`/products/${id}`} className="block">
+      <Link to={`/bloge/${id}`} className="block">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           <div className="bg-white rounded-lg overflow-hidden w-80 border-2">
             <img

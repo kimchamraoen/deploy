@@ -9,7 +9,7 @@ export function AboutUs() {
   return (
     <div className="font-sans">
       {/* About Us Section */}
-      <section className="text-center py-10 grid grid-cols-1 md:grid-cols-2 gap-10 bg-cyan-950">
+      <section className="text-center py-10 grid grid-cols-1 md:grid-cols-2 gap-10  bg-cyan-950">
         <div className="flex flex-col justify-center">
           <h1
             data-aos="zoom-in"
@@ -19,7 +19,7 @@ export function AboutUs() {
           </h1>
           <p
             data-aos="zoom-in"
-            className="text-gray-200 max-w-2xl mx-auto text-lg"
+            className="text-gray-200 max-w-2xl mx-auto text-lg "
           >
             Welcome to StoryBridge, a space where writers and readers come
             together to share ideas, stories, and knowledge. Whether you're a
@@ -37,14 +37,14 @@ export function AboutUs() {
           </div>
         </div>
       </section>
-      <section className="bg-yellow-500 p-[100px] border-t">
+      <section className="bg-yellow-500 p-[100px] border-t  ">
         <h1
           data-aos="zoom-in"
           className="text-4xl font-bold mb-4 text-center text-white"
         >
           Our History
         </h1>
-        <p data-aos="zoom-out" className="text-gray-200  px-14 mx-auto text-lg">
+        <p data-aos="zoom-out" className="text-gray-200  px-14 mx-auto text-lg ">
           When we launched StoryBridge, our goal was to provide a platform where
           individuals could share their voices and connect through storytelling.
           We set out to create an interactive space that makes blogging
@@ -63,7 +63,7 @@ export function AboutUs() {
         >
           Our Mission
         </h1>
-        <p data-aos="zoom-in" className="text-gray-200  px-14 mx-auto text-lg">
+        <p data-aos="zoom-in" className="text-gray-200 max-w-2xl px-14 mx-auto text-lg">
           When we launched StoryBridge, our goal was to provide a platform where
           individuals could share their voices and connect through storytelling.
           We set out to create an interactive space that makes blogging
@@ -119,7 +119,7 @@ export function AboutUs() {
               />
             </div>
             <div className="about font-bold  text-gray-200">
-              <h1 className="text-lg">Sin SreyPhea</h1>
+              <h1 className="text-lg">Sin Sreyphea</h1>
               <p>Mentor</p>
             </div>
           </div>

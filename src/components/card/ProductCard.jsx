@@ -1,17 +1,25 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faComment, faEnvelope, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faComment,
+  faEnvelope,
+  faBookmark,
+} from "@fortawesome/free-solid-svg-icons";
 
-export default function ProductCard({ image, title, description, likes = 0, comments = 0, bookmarks = 0 }) {
+export default function ProductCard({
+  image,
+  title,
+  description,
+  likes = 0,
+  comments = 0,
+  bookmarks = 0,
+}) {
   return (
-    <main className="max-w-screen-2xl mx-auto px-10 mt-24">
+    <main className="max-w-screen-2xl mx-auto px-10 mt-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <div className="bg-white  rounded-lg overflow-hidden w-80">
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-48 object-cover"
-          />
+        <div className="bg-white rounded-lg overflow-hidden w-80">
+          <img src={image} alt={title} className="w-full h-48 object-cover" />
           <div className="p-4">
             <div className="flex items-center mb-2">
               <img src="" alt="" className="rounded-full mr-2" />

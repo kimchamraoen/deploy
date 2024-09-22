@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // For navigation after login
 
   const initialValues = {
     email: "",
     password: "",
     rememberMe: false,
   };
-
+  
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required")
@@ -21,9 +22,18 @@ function Login() {
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    // Perform login logic here
-    console.log("Values:", values);
-    setSubmitting(false);
+    console.log("Login values:", values);
+
+    // Simulate a login API request
+    setTimeout(() => {
+      // Simulate successful login or error handling here
+      alert("Login successful");
+
+      // Redirect to dashboard or other page after login
+      navigate("/dashboard");
+
+      setSubmitting(false);
+    }, 1000);
   };
 
   return (
@@ -80,13 +90,15 @@ function Login() {
                     {showPassword ? <FaRegEye /> : <FaEyeSlash />}
                   </button>
                 </div>
-                <button
+               <Link to= "/">
+               <button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full px-4 py-2 bg-primary100 text-white font-semibold rounded-md hover:bg-primary100 transition duration-200"
                 >
                   {isSubmitting ? "Loading..." : "Login"}
-                </button>
+                </button>              
+               </Link>
                 <div className="flex items-center justify-between mt-4">
                   <label className="flex items-center">
                     <Field type="checkbox" name="rememberMe" className="mr-2" />

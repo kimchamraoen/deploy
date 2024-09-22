@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 
-function default Login() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {

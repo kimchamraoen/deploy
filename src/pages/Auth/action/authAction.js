@@ -1,5 +1,4 @@
 import { setAccessToken } from "../../../lib/secureLocalStorage";
-
 // register action
 export async function register(values) {
   // console.log("values in register func", values);
@@ -10,9 +9,9 @@ export async function register(values) {
     const response = fetch(`${import.meta.env.VITE_BASE_URL}register/`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: body
+      body: body,
     }).then((res) => res.json());
     const data = await response;
     // console.log("data in function", data);
@@ -32,9 +31,9 @@ export async function verify(values) {
     const response = fetch(`${import.meta.env.VITE_BASE_URL}verify-otp/`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: body
+      body: body,
     }).then((res) => res.json());
     const data = await response;
     // console.log("data in function", data);
@@ -53,9 +52,9 @@ export async function login(values) {
     const response = fetch(`${import.meta.env.VITE_BASE_URL}login/`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: body
+      body: body,
     }).then((res) => res.json());
     const data = await response;
     // console.log("data in function", data);

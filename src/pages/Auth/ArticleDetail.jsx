@@ -4,7 +4,7 @@ import { IoMdBookmark } from "react-icons/io";
 import { FaHeart } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 
-export default function ArticleDetail({ thumbnail, title, description }) {
+export default function ArticleDetail({ thumbnail, title, content }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likes, setLikes] = useState(30);
   const [isLiked, setIsLiked] = useState(false);
@@ -30,10 +30,9 @@ export default function ArticleDetail({ thumbnail, title, description }) {
       return !prev;
     });
   };
-
   return (
-    <div className="container">
-      <div className="flex items-center">
+    <div className="container mt-[110px] ml-[20px] ">
+      <div className="flex   ">
         <img
           src=""
           alt="User Profile"
@@ -48,20 +47,18 @@ export default function ArticleDetail({ thumbnail, title, description }) {
       </div>
 
       <h1 className="text-4xl font-bold mt-8 mb-4">{title}</h1>
-      <p className="text-gray-500 mb-8">
-        Michael Alford • September 11, 2024 • 132 views
-      </p>
-
+      <h1 className="text-4xl font-bold mt-8 mb-4">
+        How collaboration makes us better designers
+      </h1>
+      <p className="text-gray-500 mb-8">{content}</p>
       <img
         src={thumbnail}
         alt="Beautiful landscape"
         className="w-[13rem] h-auto mb-8"
       />
-
       <div className="prose max-w-none">
         <p className="text-[16px]">{description}</p>
       </div>
-
       <div className="flex w-[120px] m-8 justify-between">
         <button
           onClick={handleLikeClick}

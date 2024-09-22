@@ -1,107 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { login } from "../../pages/auth/action/authAction";
-import { useNavigate } from "react-router-dom";
+import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login() {
-  const navigate = useNavigate();
-  const regex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async (values) => {
-    const loginRes = await login(values);
-    if (loginRes.access) {
-      toast.success("Login Successfully");
-      navigate("/");
-    } else if (loginRes.message) {
-      toast.error(loginRes.message);
-    }
+  const initialValues = {
+    email: "",
+    password: "",
+    rememberMe: false,
   };
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .required("Email is required")
+      .email("Invalid email format"),
+    password: Yup.string().required("Password is required"),
+  });
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    // Perform login logic here
+    console.log("Values:", values);
+    setSubmitting(false);
+  };
+
   return (
-    <section className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-900 mb-6">
-          Login
-        </h2>
-        <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          validationSchema={Yup.object({
-            email: Yup.string()
-              .email("Email is invalid")
-              .required("Email is required"),
-            password: Yup.string()
-              .matches(
-                regex,
-                "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character"
-              )
-              .required("Password is required"),
-          })}
-          onSubmit={(values, { resetForm }) => {
-            handleLogin(values);
-            resetForm();
-          }}
-        >
-          <Form>
-            {/* Email Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <Field
-                type="email"
-                name="email"
-                id="email"
-                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="name@gmail.com"
-              />
-              <ErrorMessage
-                className="text-red-600 text-xs mt-1"
-                component="div"
-                name="email"
-              />
-            </div>
-
-            {/* Password Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block mb-1 text-sm font-medium text-gray-700"
-              >
-                Password
-              </label>
-              <Field
-                type="password"
-                name="password"
-                id="password"
-                className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter Password"
-              />
-              <ErrorMessage
-                className="text-red-600 text-xs mt-1"
-                component="div"
-                name="password"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-2 mt-5 text-white bg-primary200 hover:bg-primary100 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              Login
-            </button>
-          </Form>
-        </Formik>
-        <ToastContainer />
+    <div className="flex h-screen items-center justify-center bg-gradient-to-r">
+      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg ">
+        <div className="w-[500px] ">
+          <div className="w-[100%] flex justify-center">
+            <img
+              src="./public/assets/LogoFinal.png"
+              className="w-[100px] "
+              alt="Logo"
+            />
+          </div>
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Welcome to Story Bridge
+          </h1>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form className="space-y-6">
+                <div className="relative">
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                </div>
+                <div className="relative">
+                  <Field
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-red-500 text-sm mt-1"
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-0 top-0 mr-3 mt-3 text-gray-500 hover:text-gray-700"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaRegEye /> : <FaEyeSlash />}
+                  </button>
+                </div>
+               <Link to= "/">
+               <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md  transition duration-200"
+                >
+                  {isSubmitting ? "Loading..." : "Login"}
+                </button>              
+               </Link>
+                <div className="flex items-center justify-between mt-4">
+                  <label className="flex items-center">
+                    <Field type="checkbox" name="rememberMe" className="mr-2" />
+                    Remember Me
+                  </label>
+                  <Link
+                    to="/ForgotPassword"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Forgot Password?
+                  </Link>
+                </div>
+              </Form>
+            )}
+          </Formik>
+          <div className="mt-6 text-center">
+            <p className="text-gray-600">Don't have an account?</p>
+            <Link to="/register" className="text-blue-600 hover:underline">
+              Sign Up
+            </Link>
+          </div>
+        </div>
+        <div>
+          <img
+            src="./public/assets/Sign up-bro.png"
+            alt="Hero Image"
+            className=" max-h-96 object-cover rounded-lg"
+          />
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

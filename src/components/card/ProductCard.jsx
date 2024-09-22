@@ -34,57 +34,53 @@ export default function ProductCard({ thumbnail, title, content, id }) {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto">
-      <Link to={`/bloge/${id}`} className="block">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          <div className="bg-white rounded-lg overflow-hidden w-80 border-2">
-            <img
-              src={thumbnail}
-              alt="Product"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <div className="flex items-center mb-2">
-                <img src="" alt="" className="rounded-full mr-2" />
-                <div>
-                  <p className="text-sm font-semibold">Natali Craig</p>
-                  <p className="text-xs text-gray-500">14 Jan 2022</p>
-                </div>
+    <Link to={`/articledetail/${id} `}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-28 ">
+        <div className="bg-white  rounded-lg overflow-hidden w-80 border-2">
+          <img
+            src={thumbnail}
+            alt={title}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-4">
+            <div className="flex items-center mb-2">
+              <img src="" alt="" className="rounded-full mr-2" />
+              <div>
+                <p className="text-sm font-semibold">Natali Craig</p>
+                <p className="text-xs text-gray-500">14 Jan 2022</p>
               </div>
-              <h2 className="text-lg font-bold mb-2 line-clamp-1">{title}</h2>
-              <p className="text-gray-700 text-sm mb-4 line-clamp-2">
-                {content}
-              </p>
-              <div className="w-full flex justify-between text-md">
-                <div className="flex gap-2 text-gray-600 mb-2">
-                  <span className="badge">
-                    <button onClick={handleLikeClick}>
-                      {isLiked ? <FaHeart /> : <FaRegHeart />}
-                    </button>
-                  </span>
-                  <span className="badge">{likes}</span>
-                </div>
-                <div className="flex gap-2 text-gray-600">
-                  <span className="badge">
-                    <button onClick={handleBookmarkClick}>
-                      {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
-                    </button>
-                  </span>
-                  <span className="badge">{bookmarks}</span>
-                </div>
-                <div className="flex gap-2 text-gray-600">
-                  <span className="badge">
-                    <button onClick={handleShare}>
-                      <FaShare />
-                    </button>
-                  </span>
-                  <span className="badge">{shares}</span>
-                </div>
+            </div>
+            <h2 className="text-lg font-bold mb-2 line-clamp-1">{title}</h2>
+            <p className="text-gray-700 text-sm mb-4 line-clamp-2">{content}</p>
+            <div className="w-full flex justify-between text-md">
+              <div className="flex gap-2 text-gray-600 mb-2">
+                <span className="badge">
+                  <button onClick={handleLikeClick}>
+                    {isLiked ? <FaHeart /> : <FaRegHeart />}
+                  </button>
+                </span>
+                <span className="badge">{likes}</span>
+              </div>
+              <div className="flex gap-2 text-gray-600">
+                <span className="badge">
+                  <button onClick={handleBookmarkClick}>
+                    {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
+                  </button>
+                </span>
+                <span className="badge">{bookmarks}</span>
+              </div>
+              <div className="flex gap-2 text-gray-600">
+                <span className="badge">
+                  <button onClick={handleShare}>
+                    <FaShare />
+                  </button>
+                </span>
+                <span className="badge">{shares}</span>
               </div>
             </div>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

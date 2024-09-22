@@ -8,12 +8,12 @@ import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
-import EditProfile from "./pages/auth/EditProfile.jsx";
 import Verify from "./pages/auth/Verify.jsx";
 import { verify } from "./pages/auth/action/authAction.js";
 import { AboutUs } from "./pages/Aboutus.jsx";
+import EditProfile from "./pages/auth/EditProfile.jsx";
 import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
-import ProductDetail from "./pages/auth/ProductDetail.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,8 +32,12 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/products/:id",
-        element: <ProductDetail />,
+        path: "/editprofile",
+        element: <EditProfile />,
+      },
+      {
+        path: "/articledetail",
+        element: <ArticleDetail />,
       },
     ],
   },
@@ -42,11 +46,11 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/register", // Ensure this points to the correct component
+    path: "/register",
     element: <Register />,
   },
   {
-    path: "/forgotpassword", // Correct case for URL consistency
+    path: "/forgotpassword",
     element: <ForgotPassword />,
   },
   {

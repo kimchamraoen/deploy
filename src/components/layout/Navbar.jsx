@@ -28,7 +28,7 @@ export function NavbarComponent() {
   return (
     <Navbar fluid rounded className=" bg-slate-100">
       <NavbarBrand>
-        <img src="./public/assate/LogoFinal.png" alt="" />
+        <img src="./public/assets/LogoFinal.png" alt="" className="h-8 mr-3" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-secondary200">
           STORYBRIGED
         </span>
@@ -53,14 +53,9 @@ export function NavbarComponent() {
           </>
         )}
         {accessToken && (
-          <>
-            <Button onClick={() => handleLogout()} className="mr-2 ">
-              Logout
-            </Button>
-            <div className="div  w-14 h-14 rounded-[100%]">
-              <img src="${}" alt="" />
-            </div>
-          </>
+          <Button onClick={() => handleLogout()} className="ml-2">
+            Logout
+          </Button>
         )}
         <NavbarToggle />
       </div>
@@ -68,7 +63,7 @@ export function NavbarComponent() {
         <NavbarLink className="" as={Link} to="/" active>
           Home
         </NavbarLink>
-        <NavbarLink as={Link} to="/products">
+        <NavbarLink as={Link} to="/aboutus">
           About Us
         </NavbarLink>
       </NavbarCollapse>

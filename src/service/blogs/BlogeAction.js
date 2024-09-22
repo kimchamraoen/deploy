@@ -3,6 +3,18 @@ export default async function getAllbloge() {
     res.json()
   );
   const data = await response;
-  //   console.log("DAta", data.blogs);
+  console.log("Data", data.blogs);
   return data?.blogs;
+}
+
+export async function getSingleBloge(id) {
+  try {
+    // method fetch
+    const response = fetch(`${BASE_URL}blogs/${id}`).then((res) => res.json());
+    const data = await response;
+    // console.log("data in function", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }

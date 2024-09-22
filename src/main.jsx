@@ -11,7 +11,8 @@ import Profile from "./pages/Auth/Profile.jsx";
 import Verify from "./pages/auth/Verify.jsx";
 import { verify } from "./pages/auth/action/authAction.js";
 import { AboutUs } from "./pages/Aboutus.jsx";
-import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+// import EditProfile from "./pages/auth/EditProfile.jsx"
+// import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
 import ProductDetail from "./pages/auth/ProductDetail.jsx";
 
 const router = createBrowserRouter([
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
         path: "/aboutus",
         element: <AboutUs />,
       },
+       
       {
         path: "/products/:id",
         element: <ProductDetail />,

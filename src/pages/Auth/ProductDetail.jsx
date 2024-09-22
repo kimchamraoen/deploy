@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import ArticleDetail from "./ArticleDetail";
 import { getSingleProducts } from "../../service/product/productAction";
 
-
 export default function ProductDetail() {
   const [product, setProduct] = useState({});
   const param = useParams();
@@ -19,13 +18,12 @@ export default function ProductDetail() {
   console.log("product", product);
   console.log("param", param);
   return (
-    <main className="flex justify-center items-center h-[70vh]">
+    <div className="flex justify-center items-center ">
       <ArticleDetail
         thumbnail={product.thumbnail}
         title={product.title}
         description={product.description}
-        
       />
-    </main>
+    </div>
   );
 }

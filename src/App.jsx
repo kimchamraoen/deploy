@@ -22,9 +22,8 @@ function App() {
     <>
       {/* <NavbarComponent /> */}
       {/* <NewPassword/> */}
-      {/* <ProfileCard /> */}
-      <div className="App" data-theme="dark">
-        <div className="bg-blue-950 w-full mt-[4.3rem] flex justify-between wrap">
+      <div>
+        <div className="bg-blue-950 w-full mt-[4.3rem] flex justify-between wrap ">
           <div className="ml-5 mt-3">
             <div className="flex font-bold space-x-2 ">
               <h1 className="text-white text-lg ">Welcome to </h1>

@@ -15,7 +15,6 @@ const ProfilePage = () => {
     email: "paulaguillar1992@gmail.com",
     ranking: "⭐️⭐️⭐️⭐️",
   };
-
   return (
     <main className="mt-16">
       <div className="min-h-screen bg-gray-100 p-6">

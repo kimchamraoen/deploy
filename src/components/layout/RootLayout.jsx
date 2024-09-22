@@ -9,9 +9,9 @@ export default function RootLayout() {
         <NavbarComponent />
       </header>
       <main>
-      <Outlet />
+        <Outlet />
       </main>
-      <Footercomponent/>
+      <Footercomponent />
     </>
   );
 }

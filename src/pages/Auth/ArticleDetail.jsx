@@ -31,10 +31,9 @@ export default function ArticleDetail({ thumbnail, title, description }) {
       return !prev;
     });
   };
-
   return (
-    <div className="container">
-      <div className="flex items-center">
+    <div className="container mt-[110px] ml-[20px] ">
+      <div className="flex   ">
         <img
           src="https://th.bing.com/th/id/OIP.zoM7exeeiIqIWZHm8_KGlgHaHa?pid=ImgDet&w=190&h=190&c=7&dpr=1.9"
           alt="User Profile"
@@ -47,11 +46,7 @@ export default function ArticleDetail({ thumbnail, title, description }) {
           </p>
         </div>
       </div>
-
       <h1 className="text-4xl font-bold mt-8 mb-4">{title}</h1>
-      <p className="text-gray-500 mb-8">
-        Michael Alford • September 11, 2024 • 132 views
-      </p>
 
       <img
         src={thumbnail}

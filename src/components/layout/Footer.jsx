@@ -15,8 +15,7 @@ export function Footercomponent() {
           <FooterLinkGroup>
             <FooterLink href="/">Home</FooterLink>
             <FooterLink href="/aboutus">About Us</FooterLink>
-            <FooterLink href="#">Article</FooterLink>
-          </FooterLinkGroup>
+            </FooterLinkGroup>
         </div>
         <FooterDivider />
         <FooterCopyright href="#" by="StoryBridge" year={2022} />

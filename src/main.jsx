@@ -4,11 +4,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 import RootLayout from "./components/layout/RootLayout.jsx";
-import Login from "./pages/auth/Login.jsx";
-import Register from "./pages/auth/Register.jsx"; // Fixed typo here
+import Login from  "./pages/auth/Login.jsx"
+import Register from "./pages/auth/Register.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
-import Verifyotp from "./pages/auth/Verifyotp.jsx";
 import Profile from "./pages/Auth/Profile.jsx";
+import Verify from "./pages/auth/Verify.jsx";
+import { verify } from "./pages/auth/action/authAction.js";
 import { AboutUs } from "./pages/Aboutus.jsx";
 import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
 import ProductDetail from "./pages/auth/ProductDetail.jsx";
@@ -28,12 +29,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/aboutus",
-        element: <AboutUs />
+        element: <AboutUs />,
       },
       {
         path: "/products/:id",
-        element: <ProductDetail />
-      }
+        element: <ProductDetail />,
+      },
     ],
   },
   {
@@ -41,16 +42,16 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/register", // Fixed typo here as well
+    path: "/register", // Ensure this points to the correct component
     element: <Register />,
   },
   {
-    path: "/forgotpassword", // Changed to lowercase for URL consistency
+    path: "/forgotpassword", // Correct case for URL consistency
     element: <ForgotPassword />,
   },
   {
-    path: "/verifyotp",
-    element: <Verifyotp />,
+    path: "/verify-email",
+    element: <Verify />,
   },
 ]);
 
@@ -59,3 +60,4 @@ createRoot(document.getElementById("root")).render(
     <RouterProvider router={router}></RouterProvider>
   </StrictMode>
 );
+

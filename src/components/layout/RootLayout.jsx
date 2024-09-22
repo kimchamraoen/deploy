@@ -11,7 +11,7 @@ export default function RootLayout() {
       <main>
       <Outlet />
       </main>
-        <Footercomponent/>
+      <Footercomponent/>
     </>
   );
 }

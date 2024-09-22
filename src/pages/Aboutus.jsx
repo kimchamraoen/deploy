@@ -7,7 +7,7 @@ export function AboutUs() {
     AOS.init({ duration: 2500 }); // Initialize AOS with a duration for animations
   }, []);
   return (
-    <div className="font-sans">
+    <div className="font-sans mt-[4rem]">
       {/* About Us Section */}
       <section className="text-center py-10 grid grid-cols-1 md:grid-cols-2 gap-10 bg-cyan-950">
         <div className="flex flex-col justify-center">

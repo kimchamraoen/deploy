@@ -6,6 +6,7 @@ import { getAllProducts } from "./service/product/productAction";
 import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
 
+
 function App() {
   const [products, setProducts] = useState([]);
   console.log("products", products);
@@ -24,7 +25,7 @@ function App() {
       {/* <NewPassword/> */}
       {/* <ProfileCard /> */}
       <div>
-        <div className="bg-blue-950 w-full mt-[4.3rem] flex justify-between wrap ">
+        <div className="bg-blue-950 w-full mt-[4.3rem] flex justify-between wrap">
           <div className="ml-5 mt-3">
             <div className="flex font-bold space-x-2 ">
               <h1 className="text-white text-lg ">Welcome to </h1>

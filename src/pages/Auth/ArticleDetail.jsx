@@ -61,7 +61,7 @@ export default function ArticleDetail({ thumbnail, title, description }) {
 
       <div className="prose max-w-none">
         <p className="text-[16px]">{description}</p>
-        <p>
+        {/* <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
           at laborum incidunt optio voluptates fugit rerum quia cum, sit quidem,
           sed soluta dicta. Nobis, porro optio asperiores illum similique
@@ -89,7 +89,7 @@ export default function ArticleDetail({ thumbnail, title, description }) {
           consectetur adipisicing elit. Eveniet voluptates, repellat fugit eos
           libero possimus rerum voluptate enim architecto ipsa tenetur nisi
           excepturi blanditiis voluptatem, sed nam reprehenderit veniam aut!
-        </p>
+        </p> */}
       </div>
 
       <div className="flex w-[120px] m-8 justify-between">

@@ -54,14 +54,12 @@ export function NavbarComponent() {
         <NavbarLink as={Link} to="/" active>
           Home
         </NavbarLink>
-        <NavbarLink as={Link} to="/products">
-          Product
+        <NavbarLink as={Link} to="/aboutus">
+          About Us
         </NavbarLink>
-        <NavbarLink as={Link} to="/jobs">
+        {/* <NavbarLink as={Link} to="/jobs">
           Jobs
-        </NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
+        </NavbarLink> */}
       </NavbarCollapse>
     </Navbar>
   );

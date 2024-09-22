@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
@@ -85,7 +84,7 @@ export default function Login() {
                <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 bg-primary100 text-white font-semibold rounded-md hover:bg-primary100 transition duration-200"
+                  className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md  transition duration-200"
                 >
                   {isSubmitting ? "Loading..." : "Login"}
                 </button>              

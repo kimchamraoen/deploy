@@ -13,8 +13,8 @@ export function Footercomponent() {
             name="StoryBridge"
           />
           <FooterLinkGroup>
-            <FooterLink href="/">Home</FooterLink>
-            <FooterLink href="/aboutus">About Us</FooterLink>
+            <FooterLink href="/" className="hover:text-primary100">Home</FooterLink>
+            <FooterLink href="/aboutus" className="hover:text-primary100">About Us</FooterLink>
             </FooterLinkGroup>
         </div>
         <FooterDivider />

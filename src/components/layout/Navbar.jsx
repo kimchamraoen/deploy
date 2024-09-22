@@ -28,7 +28,7 @@ export function NavbarComponent() {
   return (
     <Navbar fluid rounded className=" bg-slate-100">
       <NavbarBrand>
-        <img src="./public/assate/LogoFinal.png" alt="" />
+        <img src="./public/assets/LogoFinal.png" alt=""  className="h-8 mr-3"/>
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-secondary200">
           STORYBRIGED
         </span>

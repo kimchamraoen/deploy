@@ -12,6 +12,12 @@ body {
   font-style: normal;
   
 }
+.image{
+  background-image:url("./public/assets/2.png");
+  background-repeat: no-repeat;
+  height: 18rem;
+ 
+}
 
 /* :root{
   --background-color: white;

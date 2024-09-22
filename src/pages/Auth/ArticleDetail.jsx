@@ -46,7 +46,6 @@ export default function ArticleDetail() {
           </p>
         </div>
       </div>
-
       <h1 className="text-4xl font-bold mt-8 mb-4">
         How collaboration makes us better designers
       </h1>
@@ -71,6 +70,7 @@ export default function ArticleDetail() {
       </div>
 
       <div className="flex w-[120px] m-8 justify-between">
+        
         <button
           onClick={handleLikeClick}
           className="text-[24px] flex items-center transition-transform duration-200 hover:scale-110"

@@ -6,7 +6,6 @@ export default async function getAllbloge() {
   console.log("Data", data.blogs);
   return data?.blogs;
 }
-
 export async function getSingleBloge(id) {
   try {
     // method fetch

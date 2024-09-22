@@ -81,7 +81,7 @@ function Register() {
       <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg">
         <div>
           <img
-            src="./src/assets/Sign up-bro.png"
+            src="./public/assets/Social ideas-cuate.png"
             alt="Hero Image"
             className="max-h-96 object-cover rounded-lg"
           />
@@ -89,7 +89,7 @@ function Register() {
         <div className="w-[500px]">
           <div className="w-[100%] flex justify-center">
             <img
-              src="./src/assets/LogoFinal.png"
+              src="./public/assets/LogoFinal.png"
               className="w-[100px]"
               alt="Logo"
             />

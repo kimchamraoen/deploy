@@ -8,10 +8,11 @@ import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx"; // Fixed typo here
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Verifyotp from "./pages/auth/Verifyotp.jsx";
-import Profile from "./pages/Auth/Profile.jsx";
+import Profile from "./pages/auth/Profile.jsx";
 import { AboutUs } from "./pages/Aboutus.jsx";
-import EditProfile from "./pages/auth/EditProfile.jsx"
-import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+// import EditProfile from "./pages/auth/EditProfile.jsx"
+// import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
+import ProductDetail from "./pages/auth/ProductDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,9 +29,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/aboutus",
-        element: <AboutUs/>
+        element: <AboutUs/>,
       },
-     
+       
+      {
+        path: "/products/:id",
+        element: <ProductDetail />
+      }
     ],
   },
   {
@@ -54,6 +59,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router}></RouterProvider>
-    <AboutUs/>
   </StrictMode>
 );

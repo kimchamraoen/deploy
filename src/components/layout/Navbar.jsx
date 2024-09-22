@@ -13,7 +13,9 @@ import {
   removeAccessToken
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { TfiPencilAlt } from "react-icons/tfi";
 export function NavbarComponent() {
   const [accessToken, setAccessToken] = useState("");
   useEffect(() => {
@@ -51,9 +53,7 @@ export function NavbarComponent() {
         )}
         <NavbarToggle />
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { TfiPencilAlt } from "react-icons/tfi";
+
 
 const UserData = (email) => {
   const userData = localStorage.getItem(email);

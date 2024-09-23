@@ -3,6 +3,7 @@ import ProductCard from "./components/card/ProductCard";
 import getAllbloge from "./service/blogs/BlogeAction.js";
 import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
+import Post from "./pages/auth/Post.jsx";
 function App() {
   const [bloge, setbloge] = useState([]);
   useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
   }, []);
   return (
     <>
+      <Post/>
       <div>
         <div className="bg-blue-950 w-[100%]  flex justify-between wrap ">
           <div className="flex image">

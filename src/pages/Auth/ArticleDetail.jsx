@@ -3,12 +3,18 @@ import { CiBookmark } from "react-icons/ci";
 import { IoMdBookmark } from "react-icons/io";
 import { FaHeart } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import BlogCard from "../../components/card/BlogCart";
 
-export default function ArticleDetail({ thumbnail, title, content }) {
+export default function ArticleDetail() {
+  const location = useLocation();
+  const { thumbnail, title, content, profileUrl, username, updated_at } =
+    location.state || {}; // Ensure these values are passed
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likes, setLikes] = useState(30);
   const [isLiked, setIsLiked] = useState(false);
   const [bookmarkCount, setBookmarkCount] = useState(30);
+
   const handleBookmarkClick = () => {
     setIsBookmarked((prev) => {
       if (!prev) {
@@ -19,6 +25,7 @@ export default function ArticleDetail({ thumbnail, title, content }) {
       return !prev;
     });
   };
+
   const handleLikeClick = () => {
     setIsLiked((prev) => {
       if (prev) {
@@ -29,58 +36,73 @@ export default function ArticleDetail({ thumbnail, title, content }) {
       return !prev;
     });
   };
+
   return (
-    <div className="container mt-[110px] ml-[20px] ">
-      <div className="flex   ">
-        <img
-          src=""
-          alt="User Profile"
-          className="w-12 h-12 rounded-full mr-4"
-        />
-        <div>
-          <h2 className="text-2xl font-bold">Michael Alford</h2>
-          <p className="text-gray-500">
-            Published in Live View • 12 min read • Mar 5, 2024
-          </p>
+    <>
+      <div className="container mx-auto px-4 mt-10">
+        <div className=" shadow-lg p-6 bg-white">
+          <div className="AutorAcc flex items-center mb-6">
+            <div className="profileAutor">
+              <img
+                className="w-32 h-32 rounded-full object-cover"
+                src={
+                  // profileUrl ||
+                  "https://st3.depositphotos.com/3431221/13621/v/450/depositphotos_136216036-stock-illustration-man-avatar-icon-hipster-character.jpg"
+                }
+                alt="Profile"
+              />
+            </div>
+            <div className="infoAutor ml-4">
+              <h3 className="text-2xl font-semibold">{username}</h3>
+              <p className="text-gray-500 text-sm">
+                Last updated: {new Date({ updated_at }).toLocaleString()}
+              </p>
+            </div>
+          </div>
+          <h1 className="text-xl  mt-4 mb-4">{title}</h1>
+          <img
+            src={thumbnail}
+            alt="Thumbnail"
+            className="w-full h-96 object-cover mb-4 "
+          />
+          <p className="text-gray-700 mb-8">{content}</p>
+          <div className="flex justify-between mt-4">
+            <button
+              onClick={handleLikeClick}
+              className="text-2xl flex items-center transition-transform duration-200 hover:scale-110"
+            >
+              {isLiked ? (
+                <FaHeart className="text-red-500 mr-2" />
+              ) : (
+                <FaRegHeart className="mr-2" />
+              )}
+              <span className="text-lg">{likes}</span>
+            </button>
+            <button
+              onClick={handleBookmarkClick}
+              className="text-2xl flex items-center transition-transform duration-200 hover:scale-110"
+            >
+              {isBookmarked ? (
+                <IoMdBookmark className="mr-2" />
+              ) : (
+                <CiBookmark className="mr-2 text-gray-500" />
+              )}
+              <span className="text-lg">{bookmarkCount}</span>
+            </button>
+          </div>
         </div>
       </div>
-      <h1 className="text-4xl font-bold mt-8 mb-4">{title}</h1>
-      <h1 className="text-4xl font-bold mt-8 mb-4">
-        How collaboration makes us better designers
-      </h1>
-      <p className="text-gray-500 mb-8">{content}</p>
-      <img
-        src={thumbnail}
-        alt="Beautiful landscape"
-        className="w-[13rem] h-auto mb-8"
-      />
-      <div className="prose max-w-none">
-        <p className="text-[16px]">{description}</p>
+      <h2 className="text-2xl font-semibold mt-10 ml-5">Mores Post</h2>
+      <div className="moresPost flex gap-4 justify-center items-center">
+        {[1, 2, 3, 4].map((index) => (
+          <BlogCard
+            className=""
+            thumbnail={thumbnail}
+            title={title}
+            content={content}
+          />
+        ))}
       </div>
-      <div className="flex w-[120px] m-8 justify-between">
-        <button
-          onClick={handleLikeClick}
-          className="text-[24px] flex items-center transition-transform duration-200 hover:scale-110"
-        >
-          {isLiked ? (
-            <FaHeart className="mr-4" />
-          ) : (
-            <FaRegHeart className="mr-4" />
-          )}
-          <span className="text-[16px]">{likes}</span>
-        </button>
-        <button
-          onClick={handleBookmarkClick}
-          className="text-[24px] flex items-center transition-transform duration-200 hover:scale-110"
-        >
-          {isBookmarked ? (
-            <IoMdBookmark className="mr-2" />
-          ) : (
-            <CiBookmark className="mr-2 text-gray-500" />
-          )}
-          <span className="text-[16px]">{bookmarkCount}</span>{" "}
-        </button>
-      </div>
-    </div>
+    </>
   );
 }

@@ -10,12 +10,11 @@ export default function Register() {
   const navigate = useNavigate();
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
   const initialValues = {
     username: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    password: "Ifmesayyes123@",
+    confirmPassword: "Ifmesayyes123@",
   };
 
   const validationSchema = Yup.object({
@@ -33,13 +32,16 @@ export default function Register() {
   });
 
   const handleRegister = async (values) => {
+    console.log("value in handle Register", values);
+    const email = values.email;
+    console.log("email in handle register", email);
     const registerData = await register(values);
     registerData?.status
       ? toast.error(registerData.message)
-      : (toast.success(registerData.message),
-        navigate("/verify-email", { state: { email: values.email } }));
+      : // navigate("/verify-email", { state: { email: email } }))
+        (toast.success(registerData.message),
+        navigate("/", { state: { email: email } }));
   };
-
   return (
     <section className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="w-full max-w-4xl p-8 bg-white rounded-lg shadow-md flex flex-col md:flex-row">

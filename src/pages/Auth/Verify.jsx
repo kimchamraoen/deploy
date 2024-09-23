@@ -9,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Verify() {
   const location = useLocation();
   console.log("location", location);
-
   //   handel verify
   const handleVerify = async (values) => {
     const verifyRes = await verify(values);
@@ -26,10 +25,10 @@ export default function Verify() {
         <Formik
           initialValues={{
             email: location?.state?.email,
-            otp_code: ""
+            otp_code: "",
           }}
           validationSchema={Yup.object({
-            otp_code: Yup.string().required("otp code is required")
+            otp_code: Yup.string().required("otp code is required"),
           })}
           onSubmit={(values) => {
             console.log("values", values);

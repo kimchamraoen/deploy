@@ -3,29 +3,42 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
-
+import { toast } from "react-toastify";
+import { login } from "./action/authAction";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // Move useNavigate here
 
   const initialValues = {
-    email: "",
+    password: "",
+    name: "",
     password: "",
     rememberMe: false,
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .required("Email is required")
-      .email("Invalid email format"),
+    name: Yup.string().required("Name is required"),
     password: Yup.string().required("Password is required"),
   });
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    // Perform login logic here
-    console.log("Values:", values);
-    setSubmitting(false);
-  };
+  const handleSubmit = async (values) => {
+    try {
+      const loginRes = await login(values); // Assuming `login` is an API call function
+      console.log("Login Response:", loginRes); // Log the response to inspect its structure
 
+      if (loginRes.access) {
+        toast.success("Login Successfully");
+        navigate("/"); // Navigate to the home page
+      } else if (loginRes.message) {
+        toast.error(loginRes.message); // Show error message from the server
+      } else {
+        toast.error("Login failed. Please check your credentials."); // Fallback error message
+      }
+    } catch (error) {
+      console.error("Error during login:", error); // Log any errors that occur during the API call
+      toast.error("An error occurred. Please try again later."); // Generic error message for unexpected issues
+    }
+  };
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-r">
       <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg ">
@@ -49,13 +62,13 @@ export default function Login() {
               <Form className="space-y-6">
                 <div className="relative">
                   <Field
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
+                    type="text"
+                    name="name"
+                    placeholder="Name"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
                   />
                   <ErrorMessage
-                    name="email"
+                    name="name"
                     component="div"
                     className="text-red-500 text-sm mt-1"
                   />
@@ -80,15 +93,13 @@ export default function Login() {
                     {showPassword ? <FaRegEye /> : <FaEyeSlash />}
                   </button>
                 </div>
-               <Link to= "/">
-               <button
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md  transition duration-200"
+                  className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md transition duration-200"
                 >
                   {isSubmitting ? "Loading..." : "Login"}
-                </button>              
-               </Link>
+                </button>
                 <div className="flex items-center justify-between mt-4">
                   <label className="flex items-center">
                     <Field type="checkbox" name="rememberMe" className="mr-2" />
@@ -115,7 +126,7 @@ export default function Login() {
           <img
             src="./public/assets/Sign up-bro.png"
             alt="Hero Image"
-            className=" max-h-96 object-cover rounded-lg"
+            className="max-h-96 object-cover rounded-lg"
           />
         </div>
       </div>

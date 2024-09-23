@@ -34,7 +34,7 @@ export function NavbarComponent() {
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
-        {!accessToken && (
+        {accessToken && (
           <>
             <Button
               as={Link}
@@ -53,16 +53,7 @@ export function NavbarComponent() {
           </>
         )}
         {accessToken && (
-          <div className="profile w-11 h-11 rounded-[100%] bg-black">
-            <img
-              src={`https://api.adorable.io/avatars/285/${accessToken}.png`}
-              alt=""
-              className="rounded-full h-8 w-8"
-            />
-            <span className="ml-2 font-medium text-primary100 hover:text-primary200">
-              {accessToken.substr(0, 10)}...
-            </span>
-          </div>
+          <div className="profile w-11 h-11 rounded-[100%] bg-black"></div>
         )}
         <NavbarToggle />
       </div>

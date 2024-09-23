@@ -42,7 +42,6 @@ export default function BlogCard({
       return newBookmarkState;
     });
   };
-
   return (
     <section className="p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden w-80 border border-gray-200 transition-transform transform hover:scale-105">

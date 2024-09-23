@@ -9,7 +9,6 @@ export default function ArticleDetail({ thumbnail, title, content }) {
   const [likes, setLikes] = useState(30);
   const [isLiked, setIsLiked] = useState(false);
   const [bookmarkCount, setBookmarkCount] = useState(30);
-
   const handleBookmarkClick = () => {
     setIsBookmarked((prev) => {
       if (!prev) {
@@ -45,7 +44,6 @@ export default function ArticleDetail({ thumbnail, title, content }) {
           </p>
         </div>
       </div>
-
       <h1 className="text-4xl font-bold mt-8 mb-4">{title}</h1>
       <h1 className="text-4xl font-bold mt-8 mb-4">
         How collaboration makes us better designers

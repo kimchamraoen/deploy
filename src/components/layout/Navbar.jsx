@@ -53,9 +53,16 @@ export function NavbarComponent() {
           </>
         )}
         {accessToken && (
-          <Button onClick={() => handleLogout()} className="ml-2">
-            Logout
-          </Button>
+          <div className="profile w-11 h-11 rounded-[100%] bg-black">
+            <img
+              src={`https://api.adorable.io/avatars/285/${accessToken}.png`}
+              alt=""
+              className="rounded-full h-8 w-8"
+            />
+            <span className="ml-2 font-medium text-primary100 hover:text-primary200">
+              {accessToken.substr(0, 10)}...
+            </span>
+          </div>
         )}
         <NavbarToggle />
       </div>

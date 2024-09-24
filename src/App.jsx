@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "./components/card/BlogCart.jsx";
 import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
+import Post from "./pages/auth/Post.jsx";
 import BlogList from "./lib/BlogeList.jsx";
 function App() {
   return (
     <>
+      <Post />
       <div>
         <div className="bg-blue-950 w-[100%]  flex justify-between wrap ">
           <div className="flex image">

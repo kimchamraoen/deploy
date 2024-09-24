@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArticleCard } from "../../components/card/UserBlogCard"; // Replace with your actual ArticleCard import
 
-const ProfilePage = () => {
+const Profile = () => {
   const location = useLocation();
   const navigate = useNavigate(); // Initialize navigate here
 
@@ -100,4 +100,4 @@ const ProfilePage = () => {
     </main>
   )};
 
-export default ProfilePage;
+export default Profile;

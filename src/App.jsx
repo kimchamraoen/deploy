@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./components/card/BlogCart.jsx";
-import getAllbloge from "./service/blogs/BlogeAction.js";
 import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
+import BlogList from "./lib/BlogeList.jsx";
 function App() {
-  const [bloge, setbloge] = useState([]);
-  useEffect(() => {
-    async function fetchllbloge() {
-      const bloges = await getAllbloge();
-      console.log("bloges in App", bloges);
-      setbloge(bloges);
-    }
-    fetchllbloge();
-  }, []);
   return (
     <>
       <div>
@@ -45,17 +36,7 @@ function App() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-10 mx-auto mt-10"></div>
       </div>
       <section className="mx-28">
-        {bloge.map((blog) => (
-          <BlogCard
-            key={blog.id}
-            title={blog.title}
-            thumbnail={blog.thumbnail}
-            content={blog.content}
-            username={blog.author.username}
-            profileUrl={blog.author.profileUrl}
-            updated_at={blog.author.updated_at}
-          />
-        ))}
+        <BlogList />
       </section>
     </>
   );

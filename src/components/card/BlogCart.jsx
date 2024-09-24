@@ -12,7 +12,6 @@ export default function BlogCard({
   thumbnail,
   title,
   content,
-  id,
   username,
   updated_at,
   profileUrl,
@@ -28,7 +27,6 @@ export default function BlogCard({
     setIsLiked((prev) => !prev);
     setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
   };
-
   const handleShare = () => {
     setShares((prev) => prev + 1); // Increment share count
     console.log(`Shared: ${[title, content, thumbnail]}}`);

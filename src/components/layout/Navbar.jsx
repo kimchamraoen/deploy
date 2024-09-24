@@ -5,6 +5,7 @@ import {
   NavbarCollapse,
   NavbarLink,
   NavbarToggle,
+  Dropdown,
 } from "flowbite-react";
 import { Link } from "react-router-dom";
 import {
@@ -13,20 +14,20 @@ import {
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
 
-export function NavbarComponent() {
+export function NavbarComponent({ username, profileUrl, bio }) {
   const [accessToken, setAccessToken] = useState("");
   useEffect(() => {
-    const accessToken = getAccessToken();
-    setAccessToken(accessToken);
-  }, [accessToken]);
-  console.log("accessToken", accessToken);
+    const token = getAccessToken();
+    setAccessToken(token);
+  }, []);
 
-  // handle logout
+  // Handle logout
   const handleLogout = () => {
     removeAccessToken();
   };
+
   return (
-    <Navbar fluid rounded className=" bg-slate-100">
+    <Navbar fluid rounded className="bg-slate-100 ">
       <NavbarBrand>
         <img src="./public/assets/LogoFinal.png" alt="" className="h-8 mr-3" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-secondary200">
@@ -34,7 +35,28 @@ export function NavbarComponent() {
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
-        {accessToken && (
+        {!accessToken ? (
+          <>
+            <Dropdown
+              label={
+                <div className="profile w-11 h-11 rounded-full bg-black"></div>
+              }
+              inline
+            >
+              <Dropdown.Item
+                as={Link}
+                to="/profile"
+                state={{ username, bio, profileUrl }}
+              >
+                View Profile
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/editprofile">
+                Edit Profile
+              </Dropdown.Item>
+              <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
+            </Dropdown>
+          </>
+        ) : (
           <>
             <Button
               as={Link}
@@ -52,13 +74,10 @@ export function NavbarComponent() {
             </Button>
           </>
         )}
-        {accessToken && (
-          <div className="profile w-11 h-11 rounded-[100%] bg-black"></div>
-        )}
         <NavbarToggle />
       </div>
       <NavbarCollapse>
-        <NavbarLink className="" as={Link} to="/" active>
+        <NavbarLink as={Link} to="/" active>
           Home
         </NavbarLink>
         <NavbarLink as={Link} to="/aboutus">

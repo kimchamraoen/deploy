@@ -4,15 +4,15 @@ import * as Yup from "yup";
 import { register } from "../../pages/auth/action/authAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<<<<<<< HEAD
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
-=======
-function Register() {
+
+// function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [registered, setRegistered] = useState(false);
->>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
+
   const navigate = useNavigate();
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -37,7 +37,6 @@ function Register() {
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirm password is required"),
   });
-<<<<<<< HEAD
 
   const handleRegister = async (values) => {
     const registerData = await register(values);
@@ -45,37 +44,6 @@ function Register() {
       ? toast.error(registerData.message)
       : (toast.success(registerData.message),
         navigate("/verify-email", { state: { email: values.email } }));
-=======
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    const existingEmails = getExistingEmails();
-    if (existingEmails.includes(values.email)) {
-      toast.error("This email already exists. Please use a different email.");
-      setSubmitting(false);
-      console.log("Get Emial:  ", values.email);
-      return;
-    }
-    try {
-      setSubmitting(true);
-      existingEmails.push(values.email);
-      localStorage.setItem("emails", JSON.stringify(existingEmails));
-      const userData = {
-        name: values.name,
-        email: values.email,
-        password: hashPassword(values.password),
-      };
-      localStorage.setItem(values.email, JSON.stringify(userData));
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      toast.success("Registration successful!");
-      resetForm();
-      setRegistered(true);
-      //navigaet
-      navigate("/");
-    } catch (error) {
-      toast.error("An error occurred during registration.");
-    } finally {
-      setSubmitting(false);
-    }
->>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
   };
 
   return (
@@ -202,5 +170,5 @@ function Register() {
         </div>
       </div>
     </section>
-  );
-}
+  )
+};

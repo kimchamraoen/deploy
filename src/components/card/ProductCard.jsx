@@ -79,12 +79,12 @@ export default function ProductCard({ thumbnail, title, content, id }) {
       <div className="blog-post border rounded p-4">
       <h2 className="text-xl font-bold">{title}</h2>
       <p>{content}</p>
-      <div className="author-info mt-2">
+      {/* <div className="author-info mt-2">
         <p>
           <strong>Author:</strong> {author.username} ({author.bio})
         </p>
-      </div>
-      <div className="categories mt-2">
+      </div> */}
+      {/* <div className="categories mt-2">
         {categories.map((category) => (
           <span
             key={category.id}
@@ -93,12 +93,12 @@ export default function ProductCard({ thumbnail, title, content, id }) {
             {category.name}
           </span>
         ))}
-      </div>
-      <div className="stats mt-2">
+      </div> */}
+      {/* <div className="stats mt-2">
         <p>Likes: {number_of_likes}</p>
         <p>Bookmarks: {number_of_bookmarks}</p>
 
-      </div>
+      </div> */}
    </div>
    </div>
   );

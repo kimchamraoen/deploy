@@ -1,13 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArticleCard } from "../../components/card/UserBlogCard"; // Replace with your actual ArticleCard import
-=======
-import { CiBookmark } from "react-icons/ci";  
-export default function profileUser() {
- 
-import { ArticleCard } from "../../components/card/UserBlogCard";
->>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
 
 const ProfilePage = () => {
   const location = useLocation();
@@ -41,7 +34,6 @@ const ProfilePage = () => {
                   Edit Profile
                 </button>
               </div>
-<<<<<<< HEAD
               <div className="ml-6 p-2">
                 <h1 className="text-2xl font-bold text-gray-800">
                   {profile.fullName}
@@ -52,26 +44,6 @@ const ProfilePage = () => {
                 <p className="text-gray-700">Location: {profile.location}</p>
                 <p className="text-gray-700">Phone: {profile.phone}</p>
                 <p className="text-gray-700">Email: {profile.email}</p>
-=======
-
-              {/* Profile Text */}
-              <div className="ml-[110px] p-2">
-                <h1 className="text-xl font-bold">Heesoung Heng</h1>
-                <p className="text-sm text-gray-600">
-                  Senior Data Scientist | AI Writer Top writer in Artificial
-                  Intelligence
-                </p>
-                <span>
-                   <CiBookmark className=""/>
-                </span>
-                <p className="text-gray-600">Position: Data Science</p>
-                <p className="text-gray-600">Ranking: ⭐⭐⭐⭐</p>
-                <p className="text-gray-600">Location: Phnom Penh</p>
-                <p className="text-gray-600">
-                  Phone: (855) 97123456 / 12345678
-                </p>
-                <p className="text-gray-600">Email: storybridge@gmail.com</p>
->>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
               </div>
             </div>
           </div>

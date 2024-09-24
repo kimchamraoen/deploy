@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./components/card/ProductCard";
+<<<<<<< HEAD
 import getAllbloge from "./service/blogs/BlogeAction.js";
 import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
 import Post from "./pages/auth/Post.jsx";
 function App() {
   const [bloge, setbloge] = useState([]);
+=======
+import { getAllProducts } from "./service/product/productAction";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+function App() {
+  const [products, setProducts] = useState([]);
+  console.log("products", products);
+>>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
   useEffect(() => {
     async function fetchllbloge() {
       const bloges = await getAllbloge();
@@ -18,6 +27,7 @@ function App() {
     <>
       <Post/>
       <div>
+<<<<<<< HEAD
         <div className="bg-blue-950 w-[100%]  flex justify-between wrap ">
           <div className="flex image">
             <div className="my-auto ml-[20rem]">
@@ -43,6 +53,16 @@ function App() {
             alt="block"
             className="max-h-72 object-cover rounded-xl mr-5"
           />
+=======
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {products.map((product) => (
+            <ProductCard
+              image={product.images[0]} // Ensure each ProductCard has a unique key
+              title={product.title}
+              description={product.description}
+            />
+          ))}
+>>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-10 mx-auto mt-10"></div>
       </div>

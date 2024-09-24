@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   FaRegHeart,
@@ -14,6 +13,7 @@ export default function ProductCard({ thumbnail, title, content, id }) {
   const [bookmarks, setBookmarks] = useState(0);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [shares, setShares] = useState(0); // State for share count
+
   const handleLikeClick = () => {
     setIsLiked((prev) => !prev);
     setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
@@ -30,14 +30,10 @@ export default function ProductCard({ thumbnail, title, content, id }) {
     });
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-28 ">
+    <div className="flex mx-28">
       <div className="bg-white  rounded-lg overflow-hidden w-80 border-2">
         <Link to="/articledetail ">
-          <img
-            src={thumbnail}
-            alt={title}
-            className="w-full h-48 object-cover"
-          />
+          <img src={thumbnail} alt="" className="w-full h-48 object-cover" />
           <div className="p-4">
             <div className="flex items-center mb-2">
               <img src="" alt="" className="rounded-full mr-2" />
@@ -75,33 +71,8 @@ export default function ProductCard({ thumbnail, title, content, id }) {
             </span>
             <span className="badge">{shares}</span>
           </div>
-        </div></div>
-      <div className="blog-post border rounded p-4">
-      <h2 className="text-xl font-bold">{title}</h2>
-      <p>{content}</p>
-      {/* <div className="author-info mt-2">
-        <p>
-          <strong>Author:</strong> {author.username} ({author.bio})
-        </p>
-      </div> */}
-      {/* <div className="categories mt-2">
-        {categories.map((category) => (
-          <span
-            key={category.id}
-            className="category bg-gray-200 rounded px-2 py-1 mr-2"
-          >
-            {category.name}
-          </span>
-        ))}
-      </div> */}
-      {/* <div className="stats mt-2">
-        <p>Likes: {number_of_likes}</p>
-        <p>Bookmarks: {number_of_bookmarks}</p>
-
-      </div> */}
-   </div>
-   </div>
+        </div>
+      </div>
+    </div>
   );
-};
-
-// export default ProductCard;
+}

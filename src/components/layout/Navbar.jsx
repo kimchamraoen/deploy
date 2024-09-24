@@ -4,12 +4,12 @@ import {
   NavbarBrand,
   NavbarCollapse,
   NavbarLink,
-  NavbarToggle
+  NavbarToggle,
 } from "flowbite-react";
 import { Link } from "react-router-dom";
 import {
   getAccessToken,
-  removeAccessToken
+  removeAccessToken,
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
 
@@ -26,19 +26,28 @@ export function NavbarComponent() {
     removeAccessToken();
   };
   return (
-    <Navbar fluid rounded className="m-5">
+    <Navbar fluid rounded className=" bg-slate-100">
       <NavbarBrand>
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Flowbite React
+        <img src="./public/assets/LogoFinal.png" alt="" className="h-8 mr-3" />
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-secondary200">
+          STORYBRIGED
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
         {!accessToken && (
           <>
-            <Button as={Link} to="/register">
+            <Button
+              as={Link}
+              to="/register"
+              className="bg-primary100 hover:bg-primary200"
+            >
               Register
             </Button>
-            <Button className="ml-2" as={Link} to="/login">
+            <Button
+              className="ml-2 bg-primary100 hover:bg-primary200"
+              as={Link}
+              to="/login"
+            >
               Login
             </Button>
           </>
@@ -51,17 +60,12 @@ export function NavbarComponent() {
         <NavbarToggle />
       </div>
       <NavbarCollapse>
-        <NavbarLink as={Link} to="/" active>
+        <NavbarLink className="" as={Link} to="/" active>
           Home
         </NavbarLink>
-        <NavbarLink as={Link} to="/products">
-          Product
+        <NavbarLink as={Link} to="/aboutus">
+          About Us
         </NavbarLink>
-        <NavbarLink as={Link} to="/jobs">
-          Jobs
-        </NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
       </NavbarCollapse>
     </Navbar>
   );

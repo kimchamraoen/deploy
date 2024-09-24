@@ -7,13 +7,11 @@ import {
   NavbarToggle,
 } from "flowbite-react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import {
   getAccessToken,
   removeAccessToken,
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
-
 export function NavbarComponent() {
   const [accessToken, setAccessToken] = useState("");
   useEffect(() => {
@@ -41,7 +39,7 @@ export function NavbarComponent() {
               as={Link}
               to="/register"
               className="bg-primary100 hover:bg-primary200"
-=======
+
 import { TfiPencilAlt } from "react-icons/tfi";
 
 export function NavbarComponent() {
@@ -113,7 +111,7 @@ export function NavbarComponent() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 17 14"
->>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
+
             >
               Register
             </Button>

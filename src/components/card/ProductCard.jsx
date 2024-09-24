@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useState } from "react";
 import {
   FaRegHeart,
@@ -75,21 +75,8 @@ export default function ProductCard({ thumbnail, title, content, id }) {
             </span>
             <span className="badge">{shares}</span>
           </div>
-        </div>
-=======
-// components/blog/BlogPost.js
-import React from "react";
-
-const BlogPost = ({
-  title,
-  content,
-  author,
-  categories,
-  number_of_likes,
-  number_of_bookmarks,
-}) => {
-  return (
-    <div className="blog-post border rounded p-4">
+        </div></div>
+      <div className="blog-post border rounded p-4">
       <h2 className="text-xl font-bold">{title}</h2>
       <p>{content}</p>
       <div className="author-info mt-2">
@@ -110,10 +97,11 @@ const BlogPost = ({
       <div className="stats mt-2">
         <p>Likes: {number_of_likes}</p>
         <p>Bookmarks: {number_of_bookmarks}</p>
->>>>>>> 3331b5ca0fb87bb85cda8901d6f46929c2855245
+
       </div>
-    </div>
+   </div>
+   </div>
   );
 };
 
-export default BlogPost;
+// export default ProductCard;

@@ -11,7 +11,7 @@ export default function Login() {
 
   const initialValues = {
     password: "",
-    name: "",
+    username: "",
     password: "",
     rememberMe: false,
   };

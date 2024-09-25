@@ -36,7 +36,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
-        {!accessToken ? (
+        {accessToken ? (
           <>
             <Dropdown
               label={
@@ -53,6 +53,9 @@ export function NavbarComponent({ username, profileUrl, bio }) {
               </Dropdown.Item>
               <Dropdown.Item as={Link} to="/editprofile">
                 Edit Profile
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/postcard">
+                Add Card
               </Dropdown.Item>
               <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
             </Dropdown>

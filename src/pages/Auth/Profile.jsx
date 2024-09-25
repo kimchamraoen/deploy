@@ -29,7 +29,7 @@ const Profile = () => {
               <div className="ml-14 p-2">
                 <h1 className="text-2xl font-bold text-gray-800">
                   Name: {username}
-                </h1>{" "}
+                </h1>
                 {/* Display user's name */}
                 <p className="text-sm text-gray-600">{bio}</p>{" "}
                 {/* Display user's bio */}

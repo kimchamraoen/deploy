@@ -39,8 +39,9 @@ export default function ArticleDetail() {
 
   return (
     <>
-      <div className="container mx-auto px-4 mt-10">
-        <div className=" shadow-lg p-6 bg-white">
+      <div className="dark:bg-black">
+      <div className="container mx-auto px-4">
+        <div className=" shadow-lg p-6">
           <div className="AutorAcc flex items-center mb-6">
             <div className="profileAutor">
               <img
@@ -105,6 +106,7 @@ export default function ArticleDetail() {
       />
       <div className="prose max-w-none">
         <p className="text-[16px]">{content}</p>
+      </div>
       </div>
     </>
   );

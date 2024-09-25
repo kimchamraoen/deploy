@@ -50,8 +50,8 @@ export default function Register() {
         navigate("/", { state: { email: email } }));
   };
   return (
-    <div className="flex h-screen items-center justify-center bg-gradient-to-r">
-      <div className="w-auto gap-8 flex p-8 bg-white rounded-lg shadow-lg">
+    <div className="flex h-screen items-center justify-center bg-gradient-to-r dark:bg-black">
+      <div className="w-auto gap-8 flex p-8  rounded-lg shadow-lg">
         <div>
           <img
             src="./public/assets/Social ideas-cuate.png"

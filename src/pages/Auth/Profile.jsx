@@ -8,11 +8,11 @@ const Profile = () => {
   const { username, bio, profileUrl } = location.state || {};
 
   return (
-    <main className="mt-16">
-      <div className="min-h-screen bg-gray-100 p-6">
-        <div className="bg-white p-6 rounded-lg mx-auto shadow-lg">
+    <main className="mt-16 dark:bg-black">
+      <div className="min-h-screen  p-6">
+        <div className=" p-6 rounded-lg mx-auto shadow-lg">
           <div className="flex items-center">
-            <div className="flex w-full items-start p-5 bg-white shadow-md rounded-lg">
+            <div className="flex w-full items-start p-5  shadow-md rounded-lg">
               <div className="flex flex-col items-center">
                 <img
                   className="w-40 h-40 rounded-full border-4"
@@ -29,7 +29,7 @@ const Profile = () => {
               <div className="ml-14 p-2">
                 <h1 className="text-2xl font-bold text-gray-800">
                   Name: {username}
-                </h1>{" "}
+                </h1>
                 {/* Display user's name */}
                 <p className="text-sm text-gray-600">{bio}</p>{" "}
                 {/* Display user's bio */}

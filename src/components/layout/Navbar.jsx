@@ -25,6 +25,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
 
   // Handle logout
   // Handle logout
+
   const handleLogout = () => {
     removeAccessToken();
     setAccessToken(""); // Clear accessToken after logout
@@ -79,22 +80,18 @@ export function NavbarComponent({ username, profileUrl, bio }) {
               Login
             </Button>
           </>
-        ) 
-        // : (
-        //   <>
-        //     <Button
-        //       className="ml-2 bg-primary100 hover:bg-primary200"
-        //       as={Link}
-        //       to="/profile"
-        //     >
-        //       Profile
-        //     </Button>
-        //     <Button onClick={handleLogout} className="ml-2">
-        //       Logout
-        //     </Button>
-        //   </>
-        // )
-        }
+        )}
+        {accessToken && (
+          <>
+            <Button onClick={() => handleLogout()} className="ml-2">
+              Logout
+            </Button>
+            <Link
+              to="/profile"
+              className="rounded overflow-hidden max-h-10 bg-black"
+            ></Link>
+          </>
+        )}
         <NavbarToggle />
       </div>
       <NavbarCollapse>

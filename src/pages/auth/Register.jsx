@@ -21,8 +21,9 @@ export default function Register() {
     email: "",
     password: "Ifmesayyes123@Ifmesayes123@",
     confirmPassword: "Ifmesayyes123@Ifmesayes123@",
+    password: "",
+    confirmPassword: "",
   };
-
   const validationSchema = Yup.object({
     username: Yup.string().required("Username is required"),
     email: Yup.string().email("Email is invalid").required("Email is required"),

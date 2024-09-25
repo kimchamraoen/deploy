@@ -15,12 +15,11 @@ function PostCard({ addBlogPost }) {
       const newCard = {
         title: cardTitle,
         content: cardContent,
-        image: await toBase64(selectedImage), // Convert image to base64
+        image: await toBase64(selectedImage),
       };
 
       const token = import.meta.env.VITE_SECURE_LOCAL_STORAGE_HASH_KEY; // Retrieve the token
 
-      // Logging the request details
       console.log("API Endpoint:", `${import.meta.env.VITE_BASE_URL}/blogs`);
       console.log("Request Body:", JSON.stringify(newCard));
       console.log("Authorization Token:", token); // Log the token
@@ -38,21 +37,21 @@ function PostCard({ addBlogPost }) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Use the retrieved token
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(newCard),
         });
 
         if (response.ok) {
           const savedPost = await response.json();
-          addBlogPost({ ...savedPost, id: Date.now() }); // Add ID for local state
+          addBlogPost({ ...savedPost, id: Date.now() });
           setCardTitle("");
           setCardContent("");
           setSelectedImage(null);
           setSuccessMessage("Card added successfully!");
         } else {
           const errorData = await response.json();
-          console.error("Error details:", errorData); // Log details about the error
+          console.error("Error details:", errorData);
           throw new Error("Failed to create blog post");
         }
       } catch (error) {

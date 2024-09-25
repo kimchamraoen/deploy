@@ -1,27 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { register } from "../../pages/auth/action/authAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { FaEyeSlash, FaEye } from "react-icons/fa"; // Corrected import
 
 export default function Register() {
-  // function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [registered, setRegistered] = useState(false);
-
   const navigate = useNavigate();
+
+  // Regex for password validation
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  // Initial form values
   const initialValues = {
-    username: "",
-    username: "",
+    username: "", // Fixed duplicate key issue
     email: "",
     password: "",
     confirmPassword: "",
   };
+
+  // Validation schema using Yup
   const validationSchema = Yup.object({
     username: Yup.string().required("Username is required"),
     email: Yup.string().email("Email is invalid").required("Email is required"),
@@ -36,20 +39,25 @@ export default function Register() {
       .required("Confirm password is required"),
   });
 
+  // Handle form submission
   const handleRegister = async (values) => {
-    console.log("value in handle Register", values);
-    const email = values.email;
-    console.log("email in handle register", email);
-    const registerData = await register(values);
-    registerData?.status
-      ? toast.error(registerData.message)
-      : // navigate("/verify-email", { state: { email: email } }))
-        (toast.success(registerData.message),
-        navigate("/", { state: { email: email } }));
+    try {
+      const registerData = await register(values);
+      if (registerData?.status) {
+        toast.error(registerData.message);
+      } else {
+        toast.success(registerData.message);
+        setRegistered(true); // Set registered to true on success
+        navigate("/", { state: { email: values.email } });
+      }
+    } catch (error) {
+      toast.error("Registration failed, please try again.");
+    }
   };
+
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-r dark:bg-black">
-      <div className="w-auto gap-8 flex p-8  rounded-lg shadow-lg">
+      <div className="w-auto gap-8 flex p-8 rounded-lg shadow-lg">
         <div>
           <img
             src="./public/assets/Social ideas-cuate.png"
@@ -72,24 +80,26 @@ export default function Register() {
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={handleSubmit}
+              onSubmit={handleRegister}
             >
               {({ isSubmitting }) => (
                 <Form className="space-y-6">
-                  {/* Form Fields */}
+                  {/* Username field */}
                   <div className="relative">
                     <Field
                       type="text"
-                      name="name"
+                      name="username" // Corrected the field name to 'username'
                       placeholder="User Name"
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
                     />
                     <ErrorMessage
-                      name="name"
+                      name="username"
                       component="div"
                       className="text-red-500 text-sm mt-1"
                     />
                   </div>
+
+                  {/* Email field */}
                   <div className="relative">
                     <Field
                       type="email"
@@ -103,6 +113,8 @@ export default function Register() {
                       className="text-red-500 text-sm mt-1"
                     />
                   </div>
+
+                  {/* Password field */}
                   <div className="relative">
                     <Field
                       type={showPassword ? "text" : "password"}
@@ -120,9 +132,11 @@ export default function Register() {
                       className="absolute right-0 top-0 mr-3 mt-3 text-gray-500 hover:text-gray-700"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <FaRegEye /> : <FaEyeSlash />}
+                      {showPassword ? <FaEye /> : <FaEyeSlash />}
                     </button>
                   </div>
+
+                  {/* Confirm Password field */}
                   <div className="relative">
                     <Field
                       type={showPassword ? "text" : "password"}
@@ -140,9 +154,11 @@ export default function Register() {
                       className="absolute right-0 top-0 mr-3 mt-3 text-gray-500 hover:text-gray-700"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <FaRegEye /> : <FaEyeSlash />}
+                      {showPassword ? <FaEye /> : <FaEyeSlash />}
                     </button>
                   </div>
+
+                  {/* Submit button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}

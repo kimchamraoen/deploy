@@ -1,43 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { login } from "./action/authAction";
+import { login } from "../auth/action/authAction";
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const initialValues = {
-    username: "",
-    password: "",
-    rememberMe: false,
-  };
-
-  const validationSchema = Yup.object().shape({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
-  });
-
-  const handleSubmit = async (values) => {
+  const regex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  // handle login
+  //   handel verify
+  const handleLogin = async (values) => {
     try {
       const loginRes = await login(values);
-
+      console.log('loginRes:', loginRes); // For debugging purposes
+  
       if (loginRes.access) {
-        toast.success("Login Successfully");
-        navigate("/"); 
+        toast.success("Login Successfully", {
+          onClose: () => navigate("/"),
+          autoClose: 2000, // Adjust autoClose to fit your needs
+        });
       } else if (loginRes.message) {
         toast.error(loginRes.message);
-      } else {
-        toast.error("Login failed. Please check your credentials.");
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      toast.error("An error occurred. Please try again later.");
+      toast.error("An error occurred during login. Please try again.");
     }
   };
+  
+  
+  
+  
 
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-r dark:bg-black">
@@ -54,67 +51,80 @@ export default function Login() {
             Welcome to Story Bridge
           </h1>
           <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
+            initialValues={{
+              username: "me",
+              password: "QWER1234@q",
+            }}
+            validationSchema={Yup.object({
+              username: Yup.string()
+                .matches(
+                  /^[a-zA-Z0-9_]*$/,
+                  "Username must contain only letters, numbers, and underscores"
+                )
+                .required("Username is required"),
+              password: Yup.string()
+                .matches(
+                  regex,
+                  "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character"
+                )
+                .required("password is required"),
+            })}
+            onSubmit={(values, { resetForm }) => {
+              handleLogin(values);
+              resetForm();
+              console.log("values", values);
+            }}
           >
-            {({ isSubmitting }) => (
-              <Form className="space-y-6">
-                <div className="relative">
-                  <Field
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
-                  />
-                  <ErrorMessage
-                    name="username"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                </div>
-                <div className="relative">
-                  <Field
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Password"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 transition duration-200"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="text-red-500 text-sm mt-1"
-                  />
-                  <button
-                    type="button"
-                    className="absolute right-0 top-0 mr-3 mt-3 text-gray-500 hover:text-gray-700"
-                    onClick={() => setShowPassword(!showPassword)}
-                    aria-label={showPassword ? "Hide password" : "Show password"}
-                  >
-                    {showPassword ? <FaRegEye /> : <FaEyeSlash />}
-                  </button>
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-4 py-2 mt-6 bg-primary200 hover:bg-primary100 text-white font-semibold rounded-md transition duration-200"
+            <Form className="w-1/2 bg-slate-200 p-5 rounded-md">
+              {/* username */}
+              <div className="mt-5">
+                <label
+                  htmlFor="username"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  {isSubmitting ? "Loading..." : "Login"}
-                </button>
-                <div className="flex items-center justify-between mt-4">
-                  <label className="flex items-center">
-                    <Field type="checkbox" name="rememberMe" className="mr-2" />
-                    Remember Me
-                  </label>
-                  <Link
-                    to="/ForgotPassword"
-                    className="text-blue-600 hover:underline"
-                  >
-                    Forgot Password?
-                  </Link>
-                </div>
-              </Form>
-            )}
+                  username
+                </label>
+                <Field
+                  type="username"
+                  name="username"
+                  id="username"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@gmail.com"
+                ></Field>
+                <ErrorMessage
+                  className="text-red-600"
+                  component="div"
+                  name="username"
+                ></ErrorMessage>
+              </div>
+              {/* password */}
+              <div className="mt-5">
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
+                <Field
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter Password"
+                ></Field>
+                <ErrorMessage
+                  className="text-red-600"
+                  component="div"
+                  name="password"
+                ></ErrorMessage>
+              </div>
+              <button
+                type="submit"
+                className="mt-5 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Login
+              </button>
+            </Form>
           </Formik>
           <div className="mt-6 text-center">
             <p className="text-gray-600">Don't have an account?</p>

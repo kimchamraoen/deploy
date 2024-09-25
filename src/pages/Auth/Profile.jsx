@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArticleCard } from "../../components/card/UserBlogCard";
 
-export default function Profile() {
+const Profile = () => {
   const location = useLocation();
   const navigate = useNavigate(); // Correctly defined here
   const { username, bio, profileUrl } = location.state || {};
@@ -41,4 +41,6 @@ export default function Profile() {
       </div>
     </main>
   );
-}
+};
+
+export default Profile;

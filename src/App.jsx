@@ -9,8 +9,8 @@ import Profile from "./pages/auth/Profile.jsx";
 function App() {
   return (
     <>
-      {/* <Profile/>
-      <PostCard /> */}
+      {/* <Profile/> */}
+      <PostCard />
       {/* Hero section */}
       <div>
         <div className="bg-blue-950 w-full flex justify-between">

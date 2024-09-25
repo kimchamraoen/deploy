@@ -4,9 +4,14 @@ import * as Yup from "yup";
 import { register } from "../../pages/auth/action/authAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  // function Register() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [registered, setRegistered] = useState(false);
+
   const navigate = useNavigate();
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -14,8 +19,8 @@ export default function Register() {
     username: "",
     username: "",
     email: "",
-    password: "Ifmesayyes123@",
-    confirmPassword: "Ifmesayyes123@",
+    password: "Ifmesayyes123@Ifmesayes123@",
+    confirmPassword: "Ifmesayyes123@Ifmesayes123@",
   };
 
   const validationSchema = Yup.object({

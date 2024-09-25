@@ -1,5 +1,9 @@
+
 import { FaRegBookmark } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
+
+import { CiBookmark } from "react-icons/ci";
+
 export function ArticleCard({ author, date, title, description, image }) {
   return (
     <div className="bg-white p-4 rounded-lg  transition duration-300">
@@ -24,7 +28,15 @@ export function ArticleCard({ author, date, title, description, image }) {
       <h3 className="text-lg font-bold mb-2">{title}</h3>
       <p className="text-sm text-gray-600 mb-4">{description}</p>
       <div className="flex justify-between items-center text-gray-600">
+
         <span><FaRegBookmark /></span>
+
+        <span>
+          {" "}
+          <CiBookmark />
+          120
+        </span>
+
         <button className="hover:text-blue-500">🔗 Share</button>
       </div>
     </div>

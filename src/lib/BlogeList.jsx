@@ -16,20 +16,16 @@ export default function BlogList() {
   return (
     <>
       <div className="flex flex-wrap">
-        {blogs.map(
-          (
-            blog // Use 'blogs' instead of 'bloge'
-          ) => (
-            <BlogCard
-              key={blog.id}
-              title={blog.title}
-              thumbnail={blog.thumbnail}
-              content={blog.content}
-              username={blog.author.username}
-              profileUrl={blog.author.profileUrl}
-            />
-          )
-        )}
+        {blogs.map((blog) => (
+          <BlogCard
+            key={blog.id}
+            title={blog.title}
+            thumbnail={blog.thumbnail}
+            content={blog.content}
+            username={blog.author.username}
+            profileUrl={blog.author.profileUrl}
+          />
+        ))}
       </div>
     </>
   );

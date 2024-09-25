@@ -1,10 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { ArticleCard } from "../../components/card/UserBlogCard"; // Adjust import as needed
+import { useLocation, useNavigate } from "react-router-dom";
+import { ArticleCard } from "../../components/card/UserBlogCard";
 
 export default function Profile() {
   const location = useLocation();
+  const navigate = useNavigate(); // Correctly defined here
   const { username, bio, profileUrl } = location.state || {};
+
   return (
     <main className="mt-16">
       <div className="min-h-screen bg-gray-100 p-6">
@@ -26,8 +28,7 @@ export default function Profile() {
               </div>
               <div className="ml-14 p-2">
                 <h1 className="text-2xl font-bold text-gray-800">
-                  {" "}
-                  Name {username}
+                  Name: {username}
                 </h1>{" "}
                 {/* Display user's name */}
                 <p className="text-sm text-gray-600">{bio}</p>{" "}

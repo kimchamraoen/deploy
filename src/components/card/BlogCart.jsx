@@ -21,25 +21,26 @@ export default function BlogCard({
   const [bookmarks, setBookmarks] = useState(0);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [shares, setShares] = useState(0);
-  const [BookmarkData, setBookmarkData] = useState(false);
 
   const handleLikeClick = () => {
     setIsLiked((prev) => !prev);
     setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
   };
+
   const handleShare = () => {
-    setShares((prev) => prev + 1); // Increment share count
-    console.log(`Shared: ${[title, content, thumbnail]}}`);
+    setShares((prev) => prev + 1);
+    console.log(`Shared: ${title}`);
   };
 
   const handleBookmarkClick = () => {
     setIsBookmarked((prev) => {
       const newBookmarkState = !prev;
       setBookmarks((prev) => (newBookmarkState ? prev + 1 : prev - 1));
-      console.log(`Bookmark: ${[title, content, thumbnail, profileUrl]}}`);
+      console.log(`Bookmark: ${title}`);
       return newBookmarkState;
     });
   };
+
   return (
     <section className="p-4">
       <div className="bg-white rounded-lg shadow-lg overflow-hidden w-80 border border-gray-200 transition-transform transform hover:scale-105">
@@ -53,13 +54,12 @@ export default function BlogCard({
             className="w-full h-48 object-cover transition-opacity duration-300 hover:opacity-90"
           />
           <div className="flex items-center p-2">
-            <div className="profileImg">
-              <img
-                src={profileUrl}
-                className="w-12 h-12 rounded-full object-cover"
-              />
-            </div>
-            <div className="inforArtur ml-3">
+            <img
+              src={profileUrl}
+              className="w-12 h-12 rounded-full object-cover"
+              alt="Profile"
+            />
+            <div className="ml-3">
               <span className="font-semibold">{username}</span>
               <span className="text-gray-400 text-xs block">
                 {new Date(updated_at).toLocaleString()}

@@ -1,19 +1,20 @@
-export default async function getAllbloge() {
-  const response = fetch(`https://blog-api.automatex.dev/blogs`).then((res) =>
-    res.json()
-  );
-  const data = await response;
-  console.log("Data", data.blogs);
-  return data?.blogs;
-}
-export async function getSingleBloge(id) {
+export default async function getAllBlogs() {
   try {
-    // method fetch
-    const response = fetch(`${BASE_URL}blogs/${id}`).then((res) => res.json());
-    const data = await response;
-    // console.log("data in function", data);
+    const response = await fetch(`https://blog-api.automatex.dev/blogs`);
+    const data = await response.json();
+    console.log("Data", data.blogs);
+    return data?.blogs;
+  } catch (error) {
+    console.log("Error fetching all blogs", error);
+  }
+}
+
+export async function getSingleBlog(id) {
+  try {
+    const response = await fetch(`https://blog-api.automatex.dev/blogs/${id}`);
+    const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.log("Error fetching single blog", error);
   }
 }

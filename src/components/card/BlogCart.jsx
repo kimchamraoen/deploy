@@ -42,8 +42,8 @@ export default function BlogCard({
   };
 
   return (
-    <section className="p-4">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden w-80 border border-gray-200 transition-transform transform hover:scale-105">
+    <section className="p-4  dark:bg-black dark:text-white mx-auto w-[20rem]">
+      <div className=" rounded-lg shadow-lg overflow-hidden w-auto border border-gray-200 transition-transform transform hover:scale-105">
         <Link
           to="/articledetail"
           state={{ thumbnail, title, content, username, updated_at }}
@@ -68,7 +68,7 @@ export default function BlogCard({
           </div>
           <div className="p-4">
             <h2 className="text-lg font-semibold mb-2 line-clamp-1">{title}</h2>
-            <p className="text-gray-700 text-sm mb-4 line-clamp-2">{content}</p>
+            <p className="text-gray-700 text-sm mb-4 line-clamp-1">{content}</p>
           </div>
         </Link>
         <div className="flex justify-between p-4 text-md text-gray-600 border-t border-gray-200">

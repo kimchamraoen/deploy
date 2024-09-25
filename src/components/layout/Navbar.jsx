@@ -13,6 +13,9 @@ import {
   removeAccessToken,
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
+import darkMode from "../../pages/auth/darkMode";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 export function NavbarComponent({ username, profileUrl, bio }) {
   const [accessToken, setAccessToken] = useState("");
@@ -27,8 +30,19 @@ export function NavbarComponent({ username, profileUrl, bio }) {
     removeAccessToken();
   };
 
+  //darmode
+  const [colorTheme, setTheme] = darkMode();
+  const [darkSide, setDarkSide] = useState(
+    colorTheme === "lighht" ? true : false
+  );
+
+  const toggleDarkMode = () => {
+    setTheme(colorTheme);
+    setDarkSide(!darkSide);
+  };
+
   return (
-    <Navbar fluid rounded className="bg-slate-100 ">
+    <Navbar fluid rounded className="bg-slate-100 dark:bg-black">
       <NavbarBrand>
         <img src="./public/assets/LogoFinal.png" alt="" className="h-8 mr-3" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-secondary200">
@@ -38,6 +52,16 @@ export function NavbarComponent({ username, profileUrl, bio }) {
       <div className="flex md:order-2">
         {accessToken ? (
           <>
+            <button onClick={() => toggleDarkMode(false)}>
+              {!darkSide ? (
+                <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faSun}
+                  className="h-6 mt-2 mx-3 text-white"
+                />
+              )}
+            </button>
             <Dropdown
               label={
                 <div className="profile w-11 h-11 rounded-full bg-black"></div>
@@ -62,6 +86,16 @@ export function NavbarComponent({ username, profileUrl, bio }) {
           </>
         ) : (
           <>
+            <button onClick={() => toggleDarkMode(false)}>
+              {!darkSide ? (
+                <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
+              ) : (
+                <FontAwesomeIcon
+                icon={faSun}
+                className="h-6 mt-2 mx-3 text-white"
+              />
+              )}
+            </button>
             <Button
               as={Link}
               to="/register"

@@ -15,18 +15,20 @@ import { useEffect, useState } from "react";
 
 export function NavbarComponent() {
   const [accessToken, setAccessToken] = useState("");
-  useEffect(() => {
-    const accessToken = getAccessToken();
-    setAccessToken(accessToken);
-  }, [accessToken]);
-  console.log("accessToken", accessToken);
 
-  // handle logout
+  useEffect(() => {
+    const token = getAccessToken();
+    setAccessToken(token);
+  }, []); // Run only on mount
+
+  // Handle logout
   const handleLogout = () => {
     removeAccessToken();
+    setAccessToken(""); // Clear accessToken after logout
   };
+
   return (
-    <Navbar fluid rounded className=" bg-slate-100">
+    <Navbar fluid rounded className="bg-slate-100">
       <NavbarBrand>
         <img src="./public/assets/LogoFinal.png" alt="" className="h-8 mr-3" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white text-secondary200">
@@ -34,7 +36,7 @@ export function NavbarComponent() {
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
-        {!accessToken && (
+        {!accessToken ? (
           <>
             <Button
               as={Link}
@@ -51,13 +53,18 @@ export function NavbarComponent() {
               Login
             </Button>
           </>
-        )}
-        {accessToken && (
+        ) : (
           <>
-            <Button onClick={() => handleLogout()} className="ml-2">
+            <Button
+              className="ml-2 bg-primary100 hover:bg-primary200"
+              as={Link}
+              to="/profile"
+            >
+              Profile
+            </Button>
+            <Button onClick={handleLogout} className="ml-2">
               Logout
             </Button>
-            <Link to="/profile" className="rounded overflow-hidden max-h-10 bg-black"></Link>
           </>
         )}
         <NavbarToggle />

@@ -50,14 +50,14 @@ export default function ArticleDetail({ thumbnail, title, content }) {
       <h1 className="text-4xl font-bold mt-8 mb-4">
         How collaboration makes us better designers
       </h1>
-      <p className="text-gray-500 mb-8">{content}</p>
+      {/* <p className="text-gray-500 mb-8">{content}</p> */}
       <img
         src={thumbnail}
         alt="Beautiful landscape"
         className="w-[13rem] h-auto mb-8"
       />
       <div className="prose max-w-none">
-        <p className="text-[16px]">{description}</p>
+        <p className="text-[16px]">{content}</p>
       </div>
       <div className="flex w-[120px] m-8 justify-between">
         <button

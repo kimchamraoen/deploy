@@ -2,60 +2,83 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function PostCard({ setBloges }) { // Rename prop to be more descriptive
+function PostCard({ addBlogPost }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cardTitle, setCardTitle] = useState("");
   const [cardContent, setCardContent] = useState("");
-  const [cardImage, setCardImage] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
 
-  // Handle adding a new card
-  const handleAddCard = (e) => {
+  const handleAddCard = async (e) => {
     e.preventDefault();
-    if (cardTitle.trim() && cardContent.trim() && cardImage) {
+
+    if (cardTitle.trim() && cardContent.trim() && selectedImage) {
       const newCard = {
-        id: Date.now(), // Unique ID based on timestamp
         title: cardTitle,
         content: cardContent,
-        image: URL.createObjectURL(cardImage), // Image URL for rendering
+        image: await toBase64(selectedImage), // Convert image to base64
       };
 
-      // Call the setBloges function passed from parent
-      setBloges((prevBloges) => [...prevBloges, newCard]);
+      const token = import.meta.env.VITE_SECURE_LOCAL_STORAGE_HASH_KEY; // Retrieve the token
 
-      // Clear input fields
-      setCardTitle("");
-      setCardContent("");
-      setCardImage(null);
-      setSelectedImage(null); // Clear image preview
+      // Logging the request details
+      console.log("API Endpoint:", `${import.meta.env.VITE_BASE_URL}/blogs`);
+      console.log("Request Body:", JSON.stringify(newCard));
+      console.log("Authorization Token:", token); // Log the token
 
-      // Provide feedback to the user
-      setSuccessMessage("Card added successfully!");
+      if (!token) {
+        console.error(
+          "Authorization Token is undefined. Check your .env file."
+        );
+        setSuccessMessage("Authorization Token is missing.");
+        return;
+      }
 
-      // Clear the message after a short duration
-      setTimeout(() => {
-        setSuccessMessage("");
-      }, 2000); // Reset message after 2 seconds
+      try {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/blogs`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Use the retrieved token
+          },
+          body: JSON.stringify(newCard),
+        });
+
+        if (response.ok) {
+          const savedPost = await response.json();
+          addBlogPost({ ...savedPost, id: Date.now() }); // Add ID for local state
+          setCardTitle("");
+          setCardContent("");
+          setSelectedImage(null);
+          setSuccessMessage("Card added successfully!");
+        } else {
+          const errorData = await response.json();
+          console.error("Error details:", errorData); // Log details about the error
+          throw new Error("Failed to create blog post");
+        }
+      } catch (error) {
+        setSuccessMessage(error.message);
+      }
     } else {
       setSuccessMessage("Please fill in all fields!");
-      setTimeout(() => {
-        setSuccessMessage("");
-      }, 2000);
     }
   };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setCardImage(file);
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
+      setSelectedImage(file);
     }
   };
 
+  const toBase64 = (file) =>
+    new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+    });
+
   return (
     <div className="container mx-auto p-6">
-      {/* Form for adding a card */}
       <form onSubmit={handleAddCard} className="mb-4">
         <ReactQuill
           value={cardTitle}
@@ -63,36 +86,12 @@ function PostCard({ setBloges }) { // Rename prop to be more descriptive
           placeholder="Enter card title"
           className="border border-gray-300 mb-2"
         />
-        <div className="flex items-center justify-center w-full mb-4">
-          <label
-            htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50"
-          >
-            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <p className="mb-2 text-sm text-gray-500">
-                <span className="font-semibold">Click to upload</span> or drag
-                and drop
-              </p>
-              <p className="text-xs text-gray-500">
-                SVG, PNG, JPG or GIF (MAX. 800x400px)
-              </p>
-            </div>
-            <input
-              id="dropzone-file"
-              type="file"
-              className="hidden"
-              onChange={handleImageChange}
-            />
-          </label>
-          {selectedImage && (
-            <div className="mt-4">
-              <img
-                src={selectedImage}
-                alt="Uploaded Preview"
-                className="object-cover w-full h-64 rounded-lg"
-              />
-            </div>
-          )}
+        <div className="mb-4">
+          <input
+            type="file"
+            onChange={handleImageChange}
+            className="border border-gray-300 mb-2"
+          />
         </div>
         <ReactQuill
           value={cardContent}
@@ -107,7 +106,6 @@ function PostCard({ setBloges }) { // Rename prop to be more descriptive
           Add Card
         </button>
 
-        {/* Success message */}
         {successMessage && (
           <p className="mt-2 text-green-600 font-semibold">{successMessage}</p>
         )}

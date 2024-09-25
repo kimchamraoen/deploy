@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./components/card/ProductCard";
-import getAllbloge from "./service/blogs/BlogeAction.js";
+import BlogCard from "./components/card/BlogCart.jsx";
+import ProfileCard from "./pages/auth/EditProfile";
 import { Link } from "react-router-dom";
 import PostCard from "./pages/auth/PostCard.jsx";
-
+import Post from "./pages/auth/Post.jsx";
+import BlogList from "./lib/BlogeList.jsx";
+import Profile from "./pages/auth/Profile.jsx";
 function App() {
-  const [bloges, setBloges] = useState([]); // Correct the variable name to plural for clarity
-
-  useEffect(() => {
-    async function fetchAllBloges() {
-      try {
-        const bloges = await getAllbloge();
-        setBloges(bloges);
-      } catch (error) {
-        console.error("Failed to fetch blogs:", error);
-      }
-    }
-    fetchAllBloges();
-  }, []);
-
   return (
     <>
-      <PostCard setBloges={setBloges} /> {/* Pass setBloges to PostCard */}
+      <Profile/>
+      <PostCard />
       {/* Hero section */}
       <div>
         <div className="bg-blue-950 w-full flex justify-between">
@@ -50,21 +39,8 @@ function App() {
           />
         </div>
       </div>
-
-      {/* Blog section */}
-      {bloges.map((item) => (
-        <ProductCard
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          thumbnail={item.thumbnail || item.image}
-          description={item.description || item.content}
-          author={item.author}
-          date={item.date}
-        />
-      ))}
+      <BlogList />
     </>
   );
 }
-
 export default App;

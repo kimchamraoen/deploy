@@ -8,12 +8,11 @@ import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
 import ForgotPassword from "./pages/auth/ForgotPassword.jsx";
 import Profile from "./pages/auth/Profile.jsx";
+
 import Verify from "./pages/auth/Verify.jsx";
-import { verify } from "./pages/auth/action/authAction.js";
 import { AboutUs } from "./pages/Aboutus.jsx";
 import EditProfile from "./pages/auth/EditProfile.jsx";
 import ArticleDetail from "./pages/auth/ArticleDetail.jsx";
-
 const router = createBrowserRouter([
   {
     path: "/",

@@ -5,6 +5,7 @@ import {
   NavbarCollapse,
   NavbarLink,
   NavbarToggle,
+  Dropdown,
 } from "flowbite-react";
 import { Link } from "react-router-dom";
 import {
@@ -13,19 +14,22 @@ import {
 } from "../../lib/secureLocalStorage";
 import { useEffect, useState } from "react";
 
-export function NavbarComponent() {
+export function NavbarComponent({ username, profileUrl, bio }) {
   const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
     const token = getAccessToken();
     setAccessToken(token);
   }, []); // Run only on mount
+    
 
+  // Handle logout
   // Handle logout
   const handleLogout = () => {
     removeAccessToken();
     setAccessToken(""); // Clear accessToken after logout
   };
+
 
   return (
     <Navbar fluid rounded className="bg-slate-100">
@@ -36,7 +40,29 @@ export function NavbarComponent() {
         </span>
       </NavbarBrand>
       <div className="flex md:order-2">
-        {!accessToken ? (
+        
+        {accessToken ? (
+          <>
+            <Dropdown
+              label={
+                <div className="profile w-11 h-11 rounded-full bg-black"></div>
+              }
+              inline
+            >
+              <Dropdown.Item
+                as={Link}
+                to="/profile"
+                state={{ username, bio, profileUrl }}
+              >
+                View Profile
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/editprofile">
+                Edit Profile
+              </Dropdown.Item>
+              <Dropdown.Item onClick={handleLogout}>Log Out</Dropdown.Item>
+            </Dropdown>
+          </>
+        ) : (
           <>
             <Button
               as={Link}
@@ -53,24 +79,26 @@ export function NavbarComponent() {
               Login
             </Button>
           </>
-        ) : (
-          <>
-            <Button
-              className="ml-2 bg-primary100 hover:bg-primary200"
-              as={Link}
-              to="/profile"
-            >
-              Profile
-            </Button>
-            <Button onClick={handleLogout} className="ml-2">
-              Logout
-            </Button>
-          </>
-        )}
+        ) 
+        // : (
+        //   <>
+        //     <Button
+        //       className="ml-2 bg-primary100 hover:bg-primary200"
+        //       as={Link}
+        //       to="/profile"
+        //     >
+        //       Profile
+        //     </Button>
+        //     <Button onClick={handleLogout} className="ml-2">
+        //       Logout
+        //     </Button>
+        //   </>
+        // )
+        }
         <NavbarToggle />
       </div>
       <NavbarCollapse>
-        <NavbarLink className="" as={Link} to="/" active>
+        <NavbarLink as={Link} to="/" active>
           Home
         </NavbarLink>
         <NavbarLink as={Link} to="/aboutus">

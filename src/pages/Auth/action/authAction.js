@@ -1,23 +1,27 @@
 import { setAccessToken } from "../../../lib/secureLocalStorage";
 // register action
 export async function register(values) {
-  // console.log("values in register func", values);
-  //   convert value to json
-  const body = JSON.stringify(values);
   try {
-    // method fetch
-    const response = fetch(`${import.meta.env.VITE_BASE_URL}register/`, {
+    const response = await fetch("https://blog-api.automatex.dev/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: body,
-    }).then((res) => res.json());
-    const data = await response;
-    // console.log("data in function", data);
+      body: JSON.stringify(values),
+    });
+
+    // Check if the response is ok (status in the range 200-299)
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Registration failed");
+    }
+
+    const data = await response.json();
+    console.log("Data in function:", data);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error("Error during registration:", error);
+    return { status: true, message: error.message }; // Return structured error response
   }
 }
 
@@ -49,7 +53,7 @@ export async function login(values) {
   const body = JSON.stringify(values);
   try {
     // method fetch
-    const response = fetch(`${import.meta.env.VITE_BASE_URL}login/`, {
+    const response = fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +61,7 @@ export async function login(values) {
       body: body,
     }).then((res) => res.json());
     const data = await response;
-    // console.log("data in function", data);
+    console.log("data in function", data);
     setAccessToken(data.access);
     return data;
   } catch (error) {

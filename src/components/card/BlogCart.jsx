@@ -46,7 +46,7 @@ export default function BlogCard({
       <div className=" rounded-lg shadow-lg overflow-hidden w-auto border border-gray-200 transition-transform transform hover:scale-105">
         <Link
           to="/articledetail"
-          state={{ thumbnail, title, content, username, updated_at }}
+          state={{ thumbnail, title, profileUrl, content, username, updated_at }}
         >
           <img
             src={thumbnail}

@@ -6,6 +6,8 @@ import PostCard from "./pages/auth/PostCard.jsx";
 import Post from "./pages/auth/Post.jsx";
 import BlogList from "./lib/BlogeList.jsx";
 import Profile from "./pages/auth/Profile.jsx";
+// import ChatHead from "./pages/auth/ChatHead.jsx";
+import ChatBot from "./pages/auth/ChatBot.jsx";
 function App() {
   return (
     <>
@@ -39,6 +41,7 @@ function App() {
         </div>
       </div>
       <BlogList />
+      {/* <ChatBot/> */}
     </>
   );
 }

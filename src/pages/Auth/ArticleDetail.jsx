@@ -40,73 +40,69 @@ export default function ArticleDetail() {
   return (
     <>
       <div className="dark:bg-black">
-      <div className="container mx-auto px-4">
-        <div className=" shadow-lg p-6">
-          <div className="AutorAcc flex items-center mb-6">
-            <div className="profileAutor">
-              <img
-                className="w-32 h-32 rounded-full object-cover"
-                src={
-                  // profileUrl ||
-                  "https://st3.depositphotos.com/3431221/13621/v/450/depositphotos_136216036-stock-illustration-man-avatar-icon-hipster-character.jpg"
-                }
-                alt="Profile"
-              />
+        <div className="container mx-auto px-4">
+          <div className=" shadow-lg p-6">
+            <div className="AutorAcc flex items-center mb-6">
+              <div className="profileAutor">
+                <img
+                  className="w-32 h-32 rounded-full object-cover"
+                  src={
+                    profileUrl
+                  }
+                  alt="Profile"
+                />
+              </div>
+              <div className="infoAutor ml-4">
+                <h3 className="text-2xl font-semibold">{username}</h3>
+                <p className="text-gray-500 text-sm">
+                  Last updated: {new Date({ updated_at }).toLocaleString()}
+                </p>
+              </div>
             </div>
-            <div className="infoAutor ml-4">
-              <h3 className="text-2xl font-semibold">{username}</h3>
-              <p className="text-gray-500 text-sm">
-                Last updated: {new Date({ updated_at }).toLocaleString()}
-              </p>
+            <h1 className="text-xl  mt-4 mb-4">{title}</h1>
+            <img
+              src={thumbnail}
+              alt="Thumbnail"
+              className="w-full h-96 object-cover mb-4 "
+            />
+            <p className="text-gray-700 mb-8">{content}</p>
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={handleLikeClick}
+                className="text-2xl flex items-center transition-transform duration-200 hover:scale-110"
+              >
+                {isLiked ? (
+                  <FaHeart className="text-red-500 mr-2" />
+                ) : (
+                  <FaRegHeart className="mr-2" />
+                )}
+                <span className="text-lg">{likes}</span>
+              </button>
+              <button
+                onClick={handleBookmarkClick}
+                className="text-2xl flex items-center transition-transform duration-200 hover:scale-110"
+              >
+                {isBookmarked ? (
+                  <IoMdBookmark className="mr-2" />
+                ) : (
+                  <CiBookmark className="mr-2 text-gray-500" />
+                )}
+                <span className="text-lg">{bookmarkCount}</span>
+              </button>
             </div>
-          </div>
-          <h1 className="text-xl  mt-4 mb-4">{title}</h1>
-          <img
-            src={thumbnail}
-            alt="Thumbnail"
-            className="w-full h-96 object-cover mb-4 "
-          />
-          <p className="text-gray-700 mb-8">{content}</p>
-          <div className="flex justify-between mt-4">
-            <button
-              onClick={handleLikeClick}
-              className="text-2xl flex items-center transition-transform duration-200 hover:scale-110"
-            >
-              {isLiked ? (
-                <FaHeart className="text-red-500 mr-2" />
-              ) : (
-                <FaRegHeart className="mr-2" />
-              )}
-              <span className="text-lg">{likes}</span>
-            </button>
-            <button
-              onClick={handleBookmarkClick}
-              className="text-2xl flex items-center transition-transform duration-200 hover:scale-110"
-            >
-              {isBookmarked ? (
-                <IoMdBookmark className="mr-2" />
-              ) : (
-                <CiBookmark className="mr-2 text-gray-500" />
-              )}
-              <span className="text-lg">{bookmarkCount}</span>
-            </button>
           </div>
         </div>
-      </div>
 
-      <h1 className="text-4xl font-bold mt-8 mb-4">{title}</h1>
-      <h1 className="text-4xl font-bold mt-8 mb-4">
-        How collaboration makes us better designers
-      </h1>
-      {/* <p className="text-gray-500 mb-8">{content}</p> */}
-      <img
-        src={thumbnail}
-        alt="Beautiful landscape"
-        className="w-[13rem] h-auto mb-8"
-      />
-      <div className="prose max-w-none">
-        <p className="text-[16px]">{content}</p>
-      </div>
+        <h2 className="text-2xl font-semibold mt-10 ml-5">Mores Post</h2>
+        <div className="moresPost flex gap-4 justify-center items-center">
+          <BlogCard
+            className=""
+            thumbnail={thumbnail}
+            profileUrl={profileUrl}
+            title={title}
+            content={content}
+          />
+        </div>
       </div>
     </>
   );

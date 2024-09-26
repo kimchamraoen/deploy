@@ -57,7 +57,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
         {accessToken ? (
           <>
             <button onClick={() => toggleDarkMode(false)}>
-              {darkSide ? (
+              {!darkSide ? (
                 <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
               ) : (
                 <FontAwesomeIcon
@@ -91,7 +91,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
         ) : (
           <>
             <button onClick={() => toggleDarkMode(false)}>
-              {darkSide ? (
+              {!darkSide ? (
                 <FontAwesomeIcon icon={faMoon} className="h-6 mt-2 mx-3" />
               ) : (
                 <FontAwesomeIcon
@@ -116,17 +116,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
             </Button>
           </>
         )}
-        {/* {accessToken && (
-          <>
-            <Button onClick={() => handleLogout()} className="ml-2">
-              Logout
-            </Button>
-            <Link
-              to="/profile"
-              className="rounded overflow-hidden max-h-10 bg-black"
-            ></Link>
-          </>
-        )} */}
+        
         <NavbarToggle />
       </div>
       <NavbarCollapse>

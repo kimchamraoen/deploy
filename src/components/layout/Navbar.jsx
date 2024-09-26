@@ -116,7 +116,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
             </Button>
           </>
         )}
-        {accessToken && (
+        {/* {accessToken && (
           <>
             <Button onClick={() => handleLogout()} className="ml-2">
               Logout
@@ -126,7 +126,7 @@ export function NavbarComponent({ username, profileUrl, bio }) {
               className="rounded overflow-hidden max-h-10 bg-black"
             ></Link>
           </>
-        )}
+        )} */}
         <NavbarToggle />
       </div>
       <NavbarCollapse>

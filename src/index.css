@@ -2,22 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap'); */
 
 @tailwind utilities;
 
-body {
+/* body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
   
-}
-.image{
+} */
+/* .image{
   background-image:url("./public/assets/2.png");
   background-repeat: no-repeat;
   height: 18rem;
  
-}
+} */
 
 /* :root{
   --background-color: white;

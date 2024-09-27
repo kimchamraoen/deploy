@@ -15,7 +15,7 @@ function App() {
       {/* Hero section */}
       <div>
         <div className="bg-blue-950 w-full dark:bg-black grid grid-cols-1 md:grid-cols-2 justify-between">
-          <div className="flex image">
+          <div className="flex">
             <div className="my-auto ml-20">
               <div className="flex font-bold space-x-2">
                 <h1 className="text-white text-lg">Welcome to</h1>

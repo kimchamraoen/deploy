@@ -20,8 +20,8 @@ export default function Register() {
   const initialValues = {
     username: "", // Fixed duplicate key issue
     email: "",
-    password: "Ifmesayyes123@Ifmesayes123@",
-    confirmPassword: "Ifmesayyes123@Ifmesayes123@",
+    // password: "Ifmesayyes123@Ifmesayes123@",
+    // confirmPassword: "Ifmesayyes123@Ifmesayes123@",
     password: "",
     confirmPassword: "",
   };
